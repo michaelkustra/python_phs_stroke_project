@@ -1,0 +1,79 @@
+---
+title: ' '
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = 'center')
+```
+
+<br>
+
+<br>
+
+```{r, echo = FALSE, out.width= '80%'}
+knitr::include_graphics("images/phs_logo.png")
+```
+
+<br><br>
+
+# Scottish Stroke Statistics
+
+<br>
+
+
+## Background  
+
+Cerebrovascular disease develops as a result of problems with the blood vessels supplying oxygen rich blood to the brain.
+
+Scotland has a high prevalence of the risk factors associated with cerebrovascular disease such as smoking and high blood pressure. Despite a substantial decrease in rates of death over the last decade, treating and preventing stroke is a national clinical priority for Scotland as outlined in the Stroke Improvement Plan.
+
+The Information Services Division (now PHS) provides an annual update on cerebrovascular disease in Scotland, including stroke, brain haemorrhage and ‘mini-stroke’
+
+<br> 
+
+
+## Main points 
+
+The incidence rate for cerebrovascular disease decreased over the last decade by 12%. Incidence rates were consistently 20% higher in males than females.  
+
+There were 3,835 deaths in Scotland in 2018 where cerebrovascular disease, including stroke, was the underlying cause. In the last decade, the death rate for cerebrovascular disease decreased by 34%.
+
+The death rate for cerebrovascular disease in the most deprived areas was 52% higher than in the least deprived areas in 2018.  
+
+The percentage of people surviving 30 days or more following their first emergency admission to hospital with a stroke improved slightly over the last ten years from 83% in 2009/10 to 86% in 2018/19.  
+
+The number of patients receiving prescriptions for drugs to treat diseases of the circulation increased by 12.5% in the last ten years. Despite this increase, the cost of prescriptions dispensed for these drugs has fallen by 21% over the last ten years to £139.7 million in 2018/19, reflecting falls in drug prices for these conditions.
+
+
+# The Data
+
+<br>
+
+The data we have on the NHS open data site is a summary of discharges from hospital and deaths in Scotland resulting from a cerebrovascular disease (including stroke and subarachnoid haemorrhage).
+[All the data can be found here](https://www.opendata.nhs.scot/dataset/scottish-stroke-statistics)
+
+The data dictionaries for each dataset can be found by clicking on the preview page. [Here is an example.](https://www.opendata.nhs.scot/dataset/scottish-stroke-statistics/resource/47656572-e196-40c8-83e8-08b0b223b2e6)
+<br>
+
+# General Questions
+
+We would like gain more understanding about stroke occurrences in Scotland. Some specific questions:
+
+* What is the most common stroke diagnosis in Scotland?  
+* Are there any differences in stroke diagnoses between different demographics (e.g. sex, age group)?  
+* Are there differences if you look at number of cases by health board vs by local authority?  
+* Are there differences in mortality rates for different types of stroke? Does this vary with demographics?  
+* Is there any way to predict upcoming diagnoses/mortality rates for future years?  
+
+
+
+
+
+
+
+
+<br><br>
+
