@@ -238,6 +238,28 @@ age_grouped.to_frame()
 ```
 
 ```{python}
+age_group_df.isna().sum()
+```
+
+
+```{r}
+# age_group plot
+py$age_group_df %>%
+  filter(crude_rate != "NaN") %>% 
+  group_by(age_group, financial_year) %>% 
+  summarise(avg_crude_rate = mean(crude_rate)) %>% 
+  ggplot() +
+  aes(x = financial_year, y = avg_crude_rate, colour = age_group, group = age_group) +
+  geom_point()+
+  geom_line()
+  #ggalt::geom_xspline()
+  #geom_line()
+```
+
+
+
+
+```{python}
 # line 1 points
 x1 = [1,2,3]
 y1 = [2,4,1]
