@@ -1,11 +1,11 @@
 {
     "id": "6D06A33A",
-    "path": null,
-    "project_path": null,
+    "path": "~/Documents/CodeClan/python_phs_stroke_project/notebooks/1_stroke_analysis.Rmd",
+    "project_path": "notebooks/1_stroke_analysis.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "1446306970",
     "contents": "",
-    "dirty": true,
+    "dirty": false,
     "created": 1653981989765.0,
     "source_on_save": false,
     "relative_order": 1,
@@ -18,11 +18,11 @@
         "scrollLine": "101"
     },
     "folds": "",
-    "lastKnownWriteTime": 0,
-    "encoding": "",
+    "lastKnownWriteTime": 1653988602,
+    "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1653988443611,
+    "last_content_update": 1653988602239,
     "read_only": false,
     "read_only_alternatives": []
 }
