@@ -1,5 +1,3 @@
-"2","Python 3.8.13 (/Users/user/Library/r-miniconda/envs/r-reticulate/bin/python)
-Reticulate 1.25 REPL -- A Python interpreter in R.
-Enter 'exit' or 'quit' to exit the REPL and return to R.
-"
+"0","reticulate::repl_python()"
 "0","# remove unnecessary columns "
+"0","stroke_activity_hb_reduced = r.stroke_activity_hb.drop(columns = ['hbrqf', 'admission_type_qf', 'age_group_qf', 'sex_qf', 'number_of_discharges_qf', 'crude_rate_qf'])"

@@ -1,4 +1,0 @@
-"0","avg_easr = plot_df.groupby(['financial_year', 'diagnosis']).mean()
-"
-"2","NameError: name 'plot_df' is not defined
-"

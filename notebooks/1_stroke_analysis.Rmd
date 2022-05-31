@@ -8,11 +8,22 @@ library(reticulate)
 library(janitor)
 ```
 
+```{r}
+py_install("pyprojroot")
+```
+
+
 ```{python}
 # load in stroke activity by health board data
 import pandas as pd
-stroke_activity_hb = pd.read_csv('raw_data/stroke_activitybyhbr.csv')
+from pyprojroot import here
+stroke_activity_hb = pd.read_csv(here('raw_data/stroke_activitybyhbr.csv'))
 ```
+
+```{bash}
+pwd
+```
+
 
 ```{python}
 # explore health board dimensions
@@ -155,19 +166,22 @@ import numpy as np
 plt.style.use('ggplot')
 
 x = ['09/10', '10/11', '11/12', '12/13', '13/14', '14/15', '15/16', '16/17', '17/18', '18/19']
-y_sub_haem_crude = [26.31814, 22.13445, 27.46612, 33.46464, 34.61038, 34.60831, 36.31586, 34.15560, 28.59394, 30.02809]
-z_tia_crude = [60.84409, 64.21096, 63.02621, 65.86601, 71.44058, 70.25732, 73.01990, 77.33200, 87.21390, 84.03062]
+y_sub_haem_easr = [25.79246,22.19797,27.07962,32.77972,34.16461,33.23279,34.89071,32.24234,27.45538,29.22935]
+z_tia_easr = [66.08660,69.94696,66.70854,67.57534,74.75272,71.76516,72.63345,76.10591,84.49829,80.46574]
 
 X_axis = np.arange(len(x))
   
-plt.bar(X_axis - 0.2, y_sub_haem_crude, 0.4, label = 'Subarachnoid Haemorrhage')
-plt.bar(X_axis + 0.2, z_tia_crude, 0.4, label = 'TIAs and related syndromes')
+plt.bar(X_axis - 0.2, y_sub_haem_easr, 0.4, label = 'Subarachnoid Haemorrhage')
+plt.bar(X_axis + 0.2, z_tia_easr, 0.4, label = 'TIAs and related syndromes')
   
 plt.xticks(X_axis, x)
 plt.xlabel("Year")
-plt.ylabel("Mean Crude Rate")
-plt.title("Mean Crude Rate by Stroke Type")
+plt.ylabel("Mean EASR")
+plt.title("Mean EASR by Stroke Type")
 plt.legend()
 plt.show()
 ```
 
+__Outcome__
+
+The most common type of stroke across Scotland is TIAs and related syndromes.

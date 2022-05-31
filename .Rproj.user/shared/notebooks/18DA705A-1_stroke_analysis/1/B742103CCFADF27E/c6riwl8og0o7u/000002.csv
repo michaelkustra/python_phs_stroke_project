@@ -1,0 +1,4 @@
+"0","age_grouped.to_frame()
+"
+"2","AttributeError: 'DataFrameGroupBy' object has no attribute 'to_frame'
+"

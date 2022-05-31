@@ -182,3 +182,85 @@ plt.legend()
 plt.show()
 ```
 
+__Outcome__
+
+The most common type of stroke across Scotland is TIAs and related syndromes.
+
+# Are there any differences in stroke diagnoses between different demographics?
+
+## Diagnosis between sexes
+
+__Assumptions__
+
+Will be looking at Subarachnoid Haemorrhage and TIAs and related syndromes only
+
+```{python}
+sex_df = stroke_activity_hb_reduced.query('sex != "All" & age_group == "All"')
+
+gender_df = sex_df.groupby(['diagnosis', 'sex'])['crude_rate'].mean().reset_index()
+
+```
+
+```{python}
+age_df = gender_df.query('diagnosis == "Subarachnoid Haemorrhage" | diagnosis == "TIAs and related syndromes"' )
+
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.style.use('ggplot')
+
+x = ['Subarachnoid Haemorrhage', 'TIAs and related syndromes']
+y_sub_crude = [19.70330, 10.87919]
+z_tias_crude = [36.66311, 35.04374]
+
+X_axis = np.arange(len(x))
+  
+plt.bar(X_axis - 0.2, y_sub_crude, 0.4, label = 'Female')
+plt.bar(X_axis + 0.2, z_tias_crude, 0.4, label = 'Male')
+  
+plt.xticks(X_axis, x)
+plt.xlabel("Stroke Type")
+plt.ylabel("Mean Crude Rate")
+plt.title("Mean Crude Rate by Stroke Type & Gender")
+plt.legend()
+plt.show()
+```
+
+## Diagnosis in Age Groups
+
+```{python}
+age_group_df = stroke_activity_hb_reduced.query('sex == "All" & age_group != "All" & admission_type == "All" & diagnosis == "Subarachnoid Haemorrhage"')
+
+age_grouped = age_group_df.groupby('age_group').mean().reset_index()
+
+age_grouped.to_frame()
+```
+
+```{python}
+# line 1 points
+x1 = [1,2,3]
+y1 = [2,4,1]
+# plotting the line 1 points 
+plt.plot(x1, y1, label = "line 1")
+  
+# line 2 points
+x2 = [1,2,3]
+y2 = [4,1,3]
+# plotting the line 2 points 
+plt.plot(x2, y2, label = "line 2")
+  
+# naming the x axis
+plt.xlabel('x - axis')
+# naming the y axis
+plt.ylabel('y - axis')
+# giving a title to my graph
+plt.title('Two lines on same graph!')
+  
+# show a legend on the plot
+plt.legend()
+  
+# function to show the plot
+plt.show()
+```
+
