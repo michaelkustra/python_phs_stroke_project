@@ -1,4 +1,4 @@
 "0","# explore health board dimensions"
 "0","stroke_activity_hb.shape"
-"2","NameError: name 'stroke_activity_hb' is not defined
+"1","(43200, 15)
 "

@@ -1,0 +1,27 @@
+"0","plot_df.groupby(['financial_year', 'diagnosis']).sum()
+"
+"1","                                           number_of_discharges  ...         easr
+financial_year diagnosis                                         ...             
+2009/10        Subarachnoid Haemorrhage                  2810.0  ...   386.886967
+               TIAs and related syndromes                6202.0  ...   991.299017
+2010/11        Subarachnoid Haemorrhage                  2546.0  ...   332.969593
+               TIAs and related syndromes                6746.0  ...  1049.204391
+2011/12        Subarachnoid Haemorrhage                  2760.0  ...   406.194293
+               TIAs and related syndromes                7104.0  ...  1000.628163
+2012/13        Subarachnoid Haemorrhage                  3366.0  ...   491.695814
+               TIAs and related syndromes                6782.0  ...  1013.630077
+2013/14        Subarachnoid Haemorrhage                  3468.0  ...   512.469102
+               TIAs and related syndromes                7644.0  ...  1121.290762
+2014/15        Subarachnoid Haemorrhage                  3884.0  ...   498.491915
+               TIAs and related syndromes                7646.0  ...  1076.477418
+2015/16        Subarachnoid Haemorrhage                  3576.0  ...   523.360714
+               TIAs and related syndromes                7578.0  ...  1089.501699
+2016/17        Subarachnoid Haemorrhage                  3546.0  ...   483.635135
+               TIAs and related syndromes                8872.0  ...  1141.588701
+2017/18        Subarachnoid Haemorrhage                  3444.0  ...   411.830740
+               TIAs and related syndromes                9638.0  ...  1267.474293
+2018/19        Subarachnoid Haemorrhage                  3542.0  ...   438.440296
+               TIAs and related syndromes                8874.0  ...  1206.986075
+
+[20 rows x 3 columns]
+"

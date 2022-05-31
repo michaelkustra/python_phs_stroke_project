@@ -1,4 +1,4 @@
-"0","reticulate::repl_python()"
-"0","# load in stroke activity by health board data"
-"0","import pandas as pd"
-"0","stroke_activity_hb = pd.read_csv('raw_data/stroke_activitybyhbr.csv')"
+"0","stroke_activity_hb = pd.read_csv('raw_data/stroke_activitybyhbr.csv')
+"
+"2","FileNotFoundError: [Errno 2] No such file or directory: 'raw_data/stroke_activitybyhbr.csv'
+"

@@ -1,0 +1,38 @@
+"0","avg_easr = plot_df.groupby(['financial_year', 'diagnosis']).mean()"
+"2","NameError: name 'plot_df' is not defined
+"
+"0","import matplotlib"
+"0","import matplotlib.pyplot as plt"
+"0","import numpy as np"
+"0",""
+"0","plt.style.use('ggplot')"
+"0",""
+"0","x = ['09/10', '10/11', '11/12', '12/13', '13/14', '14/15', '15/16', '16/17', '17/18', '18/19']"
+"0","y_sub_haem_crude = [26.31814, 22.13445, 27.46612, 33.46464, 34.61038, 34.60831, 36.31586, 34.15560, 28.59394, 30.02809]"
+"0","z_tia_crude = [60.84409, 64.21096, 63.02621, 65.86601, 71.44058, 70.25732, 73.01990, 77.33200, 87.21390, 84.03062]"
+"0",""
+"0","X_axis = np.arange(len(x))"
+"0","  "
+"0","plt.bar(X_axis - 0.2, y_sub_haem_crude, 0.4, label = 'Subarachnoid Haemorrhage')"
+"1","<BarContainer object of 10 artists>
+"
+"0","plt.bar(X_axis + 0.2, z_tia_crude, 0.4, label = 'TIAs and related syndromes')"
+"1","<BarContainer object of 10 artists>
+"
+"0","  "
+"0","plt.xticks(X_axis, x)"
+"1","([<matplotlib.axis.XTick object at 0x7f952c6de700>, <matplotlib.axis.XTick object at 0x7f952c6de6d0>, <matplotlib.axis.XTick object at 0x7f952c6cc310>, <matplotlib.axis.XTick object at 0x7f952c758c10>, <matplotlib.axis.XTick object at 0x7f952c76a370>, <matplotlib.axis.XTick object at 0x7f952c758e50>, <matplotlib.axis.XTick object at 0x7f952c76a340>, <matplotlib.axis.XTick object at 0x7f952c7712e0>, <matplotlib.axis.XTick object at 0x7f952c771a30>, <matplotlib.axis.XTick object at 0x7f952c7741c0>], [Text(0, 0, '09/10'), Text(1, 0, '10/11'), Text(2, 0, '11/12'), Text(3, 0, '12/13'), Text(4, 0, '13/14'), Text(5, 0, '14/15'), Text(6, 0, '15/16'), Text(7, 0, '16/17'), Text(8, 0, '17/18'), Text(9, 0, '18/19')])
+"
+"0","plt.xlabel(""Year"")"
+"1","Text(0.5, 0, 'Year')
+"
+"0","plt.ylabel(""Mean Crude Rate"")"
+"1","Text(0, 0.5, 'Mean Crude Rate')
+"
+"0","plt.title(""Mean Crude Rate by Stroke Type"")"
+"1","Text(0.5, 1.0, 'Mean Crude Rate by Stroke Type')
+"
+"0","plt.legend()"
+"1","<matplotlib.legend.Legend object at 0x7f952c7027f0>
+"
+"0","plt.show()"

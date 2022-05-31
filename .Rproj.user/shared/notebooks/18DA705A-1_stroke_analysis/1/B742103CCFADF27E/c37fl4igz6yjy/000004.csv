@@ -1,4 +1,3 @@
-"0","quit"
 "0","library(tidyverse)"
 "2","Registered S3 methods overwritten by 'dbplyr':
   method         from
@@ -18,6 +17,3 @@
 "
 "0","py$stroke_activity_hb %>% "
 "0","  distinct(Diagnosis)"
-"2","Error in py_get_attr_impl(x, name, silent) : 
-  AttributeError: module '__main__' has no attribute 'stroke_activity_hb'
-"

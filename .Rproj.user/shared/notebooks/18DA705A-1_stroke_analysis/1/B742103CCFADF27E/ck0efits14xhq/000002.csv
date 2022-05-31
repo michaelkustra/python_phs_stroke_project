@@ -1,0 +1,4 @@
+"0","# load in stroke activity by health board data"
+"0","import pandas as pd"
+"0","from pyprojroot import here"
+"0","stroke_activity_hb = pd.read_csv(here('raw_data/stroke_activitybyhbr.csv'))"
