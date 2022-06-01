@@ -1,5 +1,0 @@
-"0","# filter for Scotland wide stroke numbers for all patients by health board"
-"0","common_df = stroke_activity_hb_reduced.query('admission_type == ""All"" & age_group == ""All"" & sex == ""All""')"
-"0",""
-"0","# filter for Scotland wide stroke numbers for all patients by council area"
-"0","ca_common_df = stroke_activity_ca_reduced.query('admission_type == ""All"" & age_group == ""All"" & sex == ""All""')"

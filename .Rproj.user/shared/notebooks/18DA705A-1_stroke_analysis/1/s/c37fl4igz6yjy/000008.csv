@@ -1,4 +1,0 @@
-"0","quit"
-"0","library(tidyverse)"
-"0","py$stroke_activity_hb %>% "
-"0","  distinct(Diagnosis)"

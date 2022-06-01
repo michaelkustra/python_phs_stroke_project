@@ -1,0 +1,4 @@
+"0","hb_easr = hb_cases.drop(columns = 'number_of_discharges')
+"
+"2","KeyError: ""['number_of_discharges'] not found in axis""
+"

@@ -1,5 +1,0 @@
-"0","# remove unnecessary columns in health board data"
-"0","stroke_activity_hb_reduced = r.stroke_activity_hb.drop(columns = ['hbrqf', 'admission_type_qf', 'age_group_qf', 'sex_qf', 'number_of_discharges_qf', 'crude_rate_qf'])"
-"0",""
-"0","# remove unnecessary columns in council area data"
-"0","stroke_activity_ca_reduced = r.stroke_activity_ca.drop(columns = ['caqf', 'admission_type_qf', 'age_group_qf', 'sex_qf', 'number_of_discarges_qf', 'crude_rate_qf'])"

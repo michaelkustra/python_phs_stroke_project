@@ -293,20 +293,32 @@ py$tia_age_group_df %>%
 # Are there differences in number of cases by health board vs local authority?
 
 ```{python}
-# health board aggregation
+# health board aggregation for crude_rate
 hb_cases = common_df.query('diagnosis != "Cerebrovascular Disease"')
 hb_cases = hb_cases.drop(columns = 'number_of_discharges')
 
 hb_cases = hb_cases.groupby('financial_year')['crude_rate'].mean().reset_index()
 
+# health board aggregation for easr
+hb_easr = common_df.query('diagnosis != "Cerebrovascular Disease"')
+hb_easr = hb_easr.drop(columns = 'number_of_discharges')
+
+hb_easr = hb_easr.groupby('financial_year')['easr'].mean().reset_index()
+
 ```
 
 ```{python}
-# council area aggregation
+# council area aggregation for crude_rate
 ca_cases = ca_common_df.query('diagnosis != "Cerebrovascular Disease"')
 ca_cases = ca_cases.drop(columns = 'number_of_discharges')
 
 ca_cases = ca_cases.groupby('financial_year')['crude_rate'].mean().reset_index()
+
+# council area aggregation for easr
+ca_easr = ca_common_df.query('diagnosis != "Cerebrovascular Disease"')
+ca_easr = ca_easr.drop(columns = 'number_of_discharges')
+
+ca_easr = ca_easr.groupby('financial_year')['easr'].mean().reset_index()
 ```
 
 ```{python}
@@ -314,32 +326,54 @@ ca_cases = ca_cases.groupby('financial_year')['crude_rate'].mean().reset_index()
 ca_cases.rename(columns = {'crude_rate':'ca_crude_rate'}, inplace = True)
 
 hb_cases.rename(columns = {'crude_rate':'hb_crude_rate'}, inplace = True)
+
+# rename easr columns to be unique
+ca_easr.rename(columns = {'easr':'ca_easr_rate'}, inplace = True)
+
+hb_easr.rename(columns = {'easr':'hb_easr_rate'}, inplace = True)
 ```
 
 ```{python}
-# join ca and hb data sets
+# join ca and hb data sets for crude_rate
 ca_hb_combined_df = hb_cases.merge(ca_cases, how='inner', on='financial_year')
+
+# join ca and hb data sets for easr
+ca_hb_combined_easr_df = hb_easr.merge(ca_easr, how='inner', on='financial_year')
 ```
 
 ```{python}
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
+plt.close()
 plt.style.use('ggplot')
 
-# Plot a simple line chart
 plt.plot(ca_hb_combined_df['financial_year'], ca_hb_combined_df['hb_crude_rate'], color='b', label='Health Board')
 
-# Plot another line on the same chart/graph
 plt.plot(ca_hb_combined_df['financial_year'], ca_hb_combined_df['ca_crude_rate'], color='r', label='Council Area')
+
 plt.xticks(rotation = 30)
 plt.legend()
 plt.title('Mean Crude Rate in Health Board vs Council Area')
 plt.ylabel('Mean Crude Rate')
 plt.show()
-
 ```
 
+```{python}
+plt.close()
+plt.style.use('ggplot')
+
+plt.plot(ca_hb_combined_easr_df['financial_year'], ca_hb_combined_easr_df['hb_easr_rate'], color='b', label='Health Board')
+
+plt.plot(ca_hb_combined_easr_df['financial_year'], ca_hb_combined_easr_df['ca_easr_rate'], color='r', label='Council Area')
+
+plt.xticks(rotation = 30)
+plt.legend()
+plt.title('Mean EASR in Health Board vs Council Area')
+plt.ylabel('Mean EASR')
+plt.show()
+
+```
 
 
 
@@ -349,14 +383,21 @@ plt.show()
 import seaborn as sns
 sns.set_theme(style="whitegrid")
 
+plt.close()
+
 sh_tia_df = common_df.query('diagnosis != "Cerebrovascular Disease" & diagnosis != "Stroke"')
 
-# Draw a nested violinplot and split the violins for easier comparison
 sns.violinplot(data=sh_tia_df, x="financial_year", y="crude_rate", hue="diagnosis",
                split=True, inner="quart", linewidth=1,
                palette={"Subarachnoid Haemorrhage": "b", "TIAs and related syndromes": ".55"})
 sns.despine(left=True)
+plt.title('Distribution of Stroke Type by Crude Rate')
+plt.ylabel('Mean Crude Rate')
+plt.xlabel('')
+plt.xticks(rotation = 30)
+plt.legend()
 plt.show()
+
 ```
 
 
