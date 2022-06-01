@@ -1,0 +1,13 @@
+"0","sh_age_group_df.isna().sum()
+"
+"1","financial_year           0
+hbr                      0
+admission_type           0
+age_group                0
+sex                      0
+diagnosis                0
+number_of_discharges    78
+crude_rate              78
+easr                     0
+dtype: int64
+"

@@ -1,4 +1,9 @@
-"0","age_grouped.to_frame()
-"
-"2","AttributeError: 'DataFrameGroupBy' object has no attribute 'to_frame'
+"0","sh_age_group_df = stroke_activity_hb_reduced.query('sex == ""All"" & age_group != ""All"" & admission_type == ""All"" & diagnosis == ""Subarachnoid Haemorrhage""')"
+"0",""
+"0","tia_age_group_df = stroke_activity_hb_reduced.query('sex == ""All"" & age_group != ""All"" & admission_type == ""All"" & diagnosis == ""TIAs and related syndromes""')"
+"0",""
+"0","age_grouped = age_group_df.groupby('age_group').mean().reset_index()"
+"0",""
+"0","age_grouped.to_frame()"
+"2","AttributeError: 'DataFrame' object has no attribute 'to_frame'
 "
