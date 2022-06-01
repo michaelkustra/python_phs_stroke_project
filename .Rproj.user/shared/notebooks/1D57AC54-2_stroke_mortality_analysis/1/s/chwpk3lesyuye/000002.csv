@@ -1,0 +1,4 @@
+"0","# filter out Cerebrovascular and Stroke and for ""All"" patients"
+"0","hb_refined = hb_mortality_reduced.query('diagnosis != ""Cerebrovascular Disease"" & age_group == ""All"" & sex == ""All""')"
+"0",""
+"0","ca_refined = ca_mortality_reduced.query('diagnosis != ""Cerebrovascular Disease"" & age_group == ""All"" & sex == ""All""')"

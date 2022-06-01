@@ -3,7 +3,7 @@
     "path": "~/Documents/CodeClan/python_phs_stroke_project/notebooks/1_stroke_analysis.Rmd",
     "project_path": "notebooks/1_stroke_analysis.Rmd",
     "type": "r_markdown",
-    "hash": "396685764",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1653981989765.0,
@@ -14,7 +14,7 @@
         "chunk_output_type": "inline",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "367,82",
+        "cursorPosition": "362,11",
         "scrollLine": "360"
     },
     "folds": "",

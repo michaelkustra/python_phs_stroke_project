@@ -1,0 +1,5 @@
+"0","# read in health board mortality data"
+"0","hb_mortality = pd.read_csv(here('raw_data/stroke_mortalitybyhbr.csv'))"
+"0",""
+"0","# read in council area mortality data"
+"0","ca_mortality = pd.read_csv(here('raw_data/stroke_mortalitybyca.csv'))"

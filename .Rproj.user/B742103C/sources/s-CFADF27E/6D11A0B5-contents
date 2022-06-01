@@ -1,0 +1,63 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{python}
+import pandas as pd
+from pyprojroot import here
+```
+
+```{python}
+# read in health board mortality data
+hb_mortality = pd.read_csv(here('raw_data/stroke_mortalitybyhbr.csv'))
+
+# read in council area mortality data
+ca_mortality = pd.read_csv(here('raw_data/stroke_mortalitybyca.csv'))
+```
+
+```{r}
+library(reticulate)
+library(tidyverse)
+# clean data using janitor
+hb_mortality <- py$hb_mortality %>% 
+  janitor::clean_names()
+
+ca_mortality <- py$ca_mortality %>% 
+  janitor::clean_names()
+```
+
+
+```{python}
+# remove unnecessary columns
+hb_mortality_reduced = r.hb_mortality.drop(columns = ['hbrqf', 'age_group_qf', 'sex_qf', 'number_of_deaths_qf', 'crude_rate_qf'])
+
+ca_mortality_reduced = r.ca_mortality.drop(columns = ['caqf', 'age_group_qf', 'sex_qf', 'number_of_deaths_qf', 'crude_rate_qf'])
+```
+
+```{python}
+# check sum of NAs
+hb_refined.isna().sum()
+
+ca_mortality_reduced.isna().sum()
+# NAs in number of deaths and crude rate
+```
+
+
+
+```{python}
+# filter out Cerebrovascular and Stroke and keep "All" patients "All" sexes
+hb_refined = hb_mortality_reduced.query('diagnosis != "Cerebrovascular Disease" & age_group == "All" & sex == "All"')
+
+ca_refined = ca_mortality_reduced.query('diagnosis != "Cerebrovascular Disease" & age_group == "All" & sex == "All"')
+```
+
+# Are there differences in mortality rates for different types of stroke?
+
+```{python}
+
+```
+
+
+
+# Does this vary with demographics?

@@ -1,0 +1,4 @@
+"0","# remove unnecessary columns"
+"0","hb_mortality_reduced = r.hb_mortality.drop(columns = ['hbrqf', 'age_group_qf', 'sex_qf', 'number_of_deaths_qf', 'crude_rate_qf'])"
+"0",""
+"0","ca_mortality_reduced = r.ca_mortality.drop(columns = ['caqf', 'age_group_qf', 'sex_qf', 'number_of_deaths_qf', 'crude_rate_qf'])"
