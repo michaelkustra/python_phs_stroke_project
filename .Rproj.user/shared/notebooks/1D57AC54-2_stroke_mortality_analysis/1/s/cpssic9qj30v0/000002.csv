@@ -1,0 +1,4 @@
+"0","# filter for all ages"
+"0","ca_age_mortality = ca_mortality_reduced.query('age_group != ""All"" & sex == ""All""')"
+"0",""
+"0","hb_age_mortality = hb_mortality_reduced.query('age_group != ""All"" & sex == ""All""')"

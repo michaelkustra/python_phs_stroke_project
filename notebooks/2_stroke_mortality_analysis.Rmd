@@ -147,4 +147,58 @@ plt.show()
 ```
 
 
+```{python}
+# filter for all ages
+ca_age_mortality = ca_mortality_reduced.query('age_group != "All" & sex == "All"')
+
+hb_age_mortality = hb_mortality_reduced.query('age_group != "All" & sex == "All"')
+```
+
+```{python}
+ca_age_deaths_df = ca_age_mortality.groupby(['age_group', 'year', 'diagnosis'])['easr'].mean().reset_index()
+
+hb_age_deaths_df = hb_age_mortality.groupby(['age_group', 'year', 'diagnosis'])['easr'].mean().reset_index()
+```
+
+```{python}
+ca_deaths_by_age_pivoted = ca_age_deaths_df \
+    .pivot(
+        index=['age_group', 'year'], 
+        columns='diagnosis', 
+        values='easr'
+    ).reset_index()
+
+ca_deaths_by_age_pivoted
+```
+
+```{python}
+plt.close()
+plt.style.use('ggplot')
+
+plt.plot(ca_deaths_by_age_pivoted['year'], ca_deaths_by_age_pivoted['Cerebrovascular Disease'], color='b', label='cer')
+
+plt.plot(ca_deaths_by_age_pivoted['year'], ca_deaths_by_age_pivoted['Stroke'], color='r', label='Council Area')
+
+plt.plot(ca_deaths_by_age_pivoted['year'], ca_deaths_by_age_pivoted['Subarachnoid Haemorrhage'], color='r', label='Council Area')
+
+plt.xticks(rotation = 30)
+plt.legend()
+plt.title('Mean Crude Rate in Health Board vs Council Area')
+plt.ylabel('Mean Crude Rate')
+plt.show()
+```
+
+```{r}
+py$ca_age_deaths_df %>%
+  group_by(age_group, year) %>% 
+  ggplot() +
+  aes(x = year, y = easr, colour = age_group, group = age_group) +
+  geom_point()+
+  geom_line()+
+  ggtitle("Subarachnoid Haemorrhage Mean Crude Rate by Age Group") +
+  labs(x = "Financial Year",
+       y = "Mean Crude Rate",
+       colour = "Age Group") +
+  theme_minimal()
+```
 
