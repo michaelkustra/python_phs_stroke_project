@@ -107,7 +107,7 @@ common_df.groupby(['financial_year', 'diagnosis']).mean()
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-
+plt.close()
 plt.style.use('ggplot')
 
 plot_df = common_df.query('diagnosis == "Subarachnoid Haemorrhage" | diagnosis == "TIAs and related syndromes"')
@@ -124,7 +124,7 @@ plt.bar(X_axis - 0.2, y_sub_haem, 0.4, label = 'Subarachnoid Haemorrhage')
 plt.bar(X_axis + 0.2, z_tia, 0.4, label = 'TIAs and related syndromes')
   
 plt.xticks(X_axis, x)
-plt.xlabel("Year")
+plt.xlabel("Financial Year")
 plt.ylabel("Total Number of Discharges")
 plt.title("Total Discharges by Stroke Type")
 plt.legend()
@@ -145,7 +145,7 @@ avg_easr = plot_df.groupby(['financial_year', 'diagnosis']).mean()
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-
+plt.close()
 plt.style.use('ggplot')
 
 x = ['09/10', '10/11', '11/12', '12/13', '13/14', '14/15', '15/16', '16/17', '17/18', '18/19']
@@ -158,7 +158,7 @@ plt.bar(X_axis - 0.2, y_sub_haem_crude, 0.4, label = 'Subarachnoid Haemorrhage')
 plt.bar(X_axis + 0.2, z_tia_crude, 0.4, label = 'TIAs and related syndromes')
   
 plt.xticks(X_axis, x)
-plt.xlabel("Year")
+plt.xlabel("Financial Year")
 plt.ylabel("Mean Crude Rate")
 plt.title("Mean Crude Rate by Stroke Type")
 plt.legend()
@@ -173,7 +173,7 @@ avg_easr = plot_df.groupby(['financial_year', 'diagnosis']).mean()
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-
+plt.close()
 plt.style.use('ggplot')
 
 x = ['09/10', '10/11', '11/12', '12/13', '13/14', '14/15', '15/16', '16/17', '17/18', '18/19']
@@ -186,7 +186,7 @@ plt.bar(X_axis - 0.2, y_sub_haem_easr, 0.4, label = 'Subarachnoid Haemorrhage')
 plt.bar(X_axis + 0.2, z_tia_easr, 0.4, label = 'TIAs and related syndromes')
   
 plt.xticks(X_axis, x)
-plt.xlabel("Year")
+plt.xlabel("Financial Year")
 plt.ylabel("Mean EASR")
 plt.title("Mean EASR by Stroke Type")
 plt.legend()
@@ -218,7 +218,7 @@ age_df = gender_df.query('diagnosis == "Subarachnoid Haemorrhage" | diagnosis ==
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-
+plt.close()
 plt.style.use('ggplot')
 
 x = ['Subarachnoid Haemorrhage', 'TIAs and related syndromes']

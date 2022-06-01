@@ -3,7 +3,7 @@
     "path": "~/Documents/CodeClan/python_phs_stroke_project/notebooks/2_stroke_mortality_analysis.Rmd",
     "project_path": "notebooks/2_stroke_mortality_analysis.Rmd",
     "type": "r_markdown",
-    "hash": "1817459208",
+    "hash": "751313341",
     "contents": "",
     "dirty": false,
     "created": 1654078155326.0,
@@ -14,15 +14,15 @@
         "chunk_output_type": "inline",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "57,0",
-        "scrollLine": "44"
+        "cursorPosition": "142,56",
+        "scrollLine": "139"
     },
     "folds": "",
-    "lastKnownWriteTime": 1654081180,
+    "lastKnownWriteTime": 1654088151,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1654081180073,
+    "last_content_update": 1654088151732,
     "read_only": false,
     "read_only_alternatives": []
 }

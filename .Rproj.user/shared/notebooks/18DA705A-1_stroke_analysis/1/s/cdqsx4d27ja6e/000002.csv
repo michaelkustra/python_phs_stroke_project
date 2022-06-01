@@ -1,2 +1,5 @@
-"0","# join ca and hb data sets"
+"0","# join ca and hb data sets for crude_rate"
 "0","ca_hb_combined_df = hb_cases.merge(ca_cases, how='inner', on='financial_year')"
+"0",""
+"0","# join ca and hb data sets for easr"
+"0","ca_hb_combined_easr_df = hb_easr.merge(ca_easr, how='inner', on='financial_year')"

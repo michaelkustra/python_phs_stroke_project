@@ -1,5 +1,4 @@
-"0","sh_age_group_df.isna().sum()
-"
+"0","sh_age_group_df.isna().sum()"
 "1","financial_year           0
 hbr                      0
 admission_type           0

@@ -1,0 +1,29 @@
+"0","import matplotlib"
+"0","import matplotlib.pyplot as plt"
+"0","import numpy as np"
+"0",""
+"0","plt.close()"
+"0","plt.style.use('ggplot')"
+"0",""
+"0","plt.plot(deaths_pivoted['year'], deaths_pivoted['Cerebrovascular Disease'], color='b', label='Cerebrovascular Disease')"
+"1","[<matplotlib.lines.Line2D object at 0x7f866d826700>]
+"
+"0","plt.plot(deaths_pivoted['year'], deaths_pivoted['Stroke'], color='r', label='Stroke')"
+"1","[<matplotlib.lines.Line2D object at 0x7f866d826a00>]
+"
+"0","plt.plot(deaths_pivoted['year'], deaths_pivoted['Subarachnoid Haemorrhage'], color='y', label='Subarachnoid Haemorrhage')"
+"1","[<matplotlib.lines.Line2D object at 0x7f866d826c70>]
+"
+"0","plt.xticks(rotation = 30)"
+"1","(array([2010., 2012., 2014., 2016., 2018., 2020., 2022.]), [Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, '')])
+"
+"0","plt.legend(loc=1)"
+"1","<matplotlib.legend.Legend object at 0x7f866d8367f0>
+"
+"0","plt.title('Total Deaths by Stroke Type')"
+"1","Text(0.5, 1.0, 'Total Deaths by Stroke Type')
+"
+"0","plt.ylabel('Number of Deaths')"
+"1","Text(0, 0.5, 'Number of Deaths')
+"
+"0","plt.show()"

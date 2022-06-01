@@ -1,0 +1,4 @@
+"0","ca_demo_refined = ca.mortality_reduced.query('sex != ""All"" & age_group == ""All""')
+"
+"2","NameError: name 'ca' is not defined
+"

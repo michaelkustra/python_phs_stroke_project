@@ -1,0 +1,7 @@
+"0","deaths_by_gender_pivoted
+"
+"1","sex                 diagnosis  Females    Males
+0     Cerebrovascular Disease  49808.0  33340.0
+1                      Stroke  27912.0  17512.0
+2    Subarachnoid Haemorrhage   2300.0   1120.0
+"

@@ -1,3 +1,4 @@
+"0","reticulate::repl_python()"
 "0","# load in data"
 "0","import pandas as pd"
 "0","from pyprojroot import here"

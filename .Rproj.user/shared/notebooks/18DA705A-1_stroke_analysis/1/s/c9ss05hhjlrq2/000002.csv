@@ -1,3 +1,4 @@
+"0","reticulate::repl_python()"
 "0","# remove unnecessary columns in health board data"
 "0","stroke_activity_hb_reduced = r.stroke_activity_hb.drop(columns = ['hbrqf', 'admission_type_qf', 'age_group_qf', 'sex_qf', 'number_of_discharges_qf', 'crude_rate_qf'])"
 "0",""

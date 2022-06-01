@@ -2,3 +2,8 @@
 "0","ca_cases.rename(columns = {'crude_rate':'ca_crude_rate'}, inplace = True)"
 "0",""
 "0","hb_cases.rename(columns = {'crude_rate':'hb_crude_rate'}, inplace = True)"
+"0",""
+"0","# rename easr columns to be unique"
+"0","ca_easr.rename(columns = {'easr':'ca_easr_rate'}, inplace = True)"
+"0",""
+"0","hb_easr.rename(columns = {'easr':'hb_easr_rate'}, inplace = True)"

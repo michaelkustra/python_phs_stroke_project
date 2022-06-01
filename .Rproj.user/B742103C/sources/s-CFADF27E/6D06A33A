@@ -3,7 +3,7 @@
     "path": "~/Documents/CodeClan/python_phs_stroke_project/notebooks/1_stroke_analysis.Rmd",
     "project_path": "notebooks/1_stroke_analysis.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "4244194415",
     "contents": "",
     "dirty": false,
     "created": 1653981989765.0,
@@ -14,15 +14,15 @@
         "chunk_output_type": "inline",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "362,11",
-        "scrollLine": "360"
+        "cursorPosition": "182,26",
+        "scrollLine": "194"
     },
     "folds": "",
-    "lastKnownWriteTime": 1654078121,
+    "lastKnownWriteTime": 1654088155,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1654078121028,
+    "last_content_update": 1654088155625,
     "read_only": false,
     "read_only_alternatives": []
 }

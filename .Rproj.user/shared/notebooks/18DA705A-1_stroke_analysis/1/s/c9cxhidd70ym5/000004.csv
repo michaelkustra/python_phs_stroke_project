@@ -1,0 +1,33 @@
+"0","plt.close()
+plt.style.use('ggplot')
+
+x = ['Subarachnoid Haemorrhage', 'TIAs and related syndromes']
+y_sub_crude = [19.70330, 10.87919]
+z_tias_crude = [36.66311, 35.04374]
+
+X_axis = np.arange(len(x))
+  
+plt.bar(X_axis - 0.2, y_sub_crude, 0.4, label = 'Female')
+"
+"1","<BarContainer object of 2 artists>
+"
+"0","plt.bar(X_axis + 0.2, z_tias_crude, 0.4, label = 'Male')"
+"1","<BarContainer object of 2 artists>
+"
+"0","  "
+"0","plt.xticks(X_axis, x)"
+"1","([<matplotlib.axis.XTick object at 0x7f867f7aa4c0>, <matplotlib.axis.XTick object at 0x7f867f7aa490>], [Text(0, 0, 'Subarachnoid Haemorrhage'), Text(1, 0, 'TIAs and related syndromes')])
+"
+"0","plt.xlabel(""Stroke Type"")"
+"1","Text(0.5, 0, 'Stroke Type')
+"
+"0","plt.ylabel(""Mean Crude Rate"")"
+"1","Text(0, 0.5, 'Mean Crude Rate')
+"
+"0","plt.title(""Mean Crude Rate by Stroke Type & Gender"")"
+"1","Text(0.5, 1.0, 'Mean Crude Rate by Stroke Type & Gender')
+"
+"0","plt.legend()"
+"1","<matplotlib.legend.Legend object at 0x7f867f7b9430>
+"
+"0","plt.show()"
