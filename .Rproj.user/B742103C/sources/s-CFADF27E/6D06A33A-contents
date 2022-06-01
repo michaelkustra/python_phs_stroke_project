@@ -14,10 +14,11 @@ py_install("pyprojroot")
 
 
 ```{python}
-# load in stroke activity by health board data
+# load in data
 import pandas as pd
 from pyprojroot import here
 stroke_activity_hb = pd.read_csv(here('raw_data/stroke_activitybyhbr.csv'))
+stroke_activity_ca = pd.read_csv(here('raw_data/stroke_activitybyca.csv'))
 ```
 
 ```{bash}
@@ -40,8 +41,12 @@ library(tidyverse)
 py$stroke_activity_hb %>% 
   distinct(Diagnosis)
 
-# clean names using janitor package
+# clean health board data names using janitor package
 stroke_activity_hb <- py$stroke_activity_hb %>% 
+  clean_names()
+
+# clean council area data names
+stroke_activity_ca <- py$stroke_activity_ca %>% 
   clean_names()
 ```
 
@@ -63,14 +68,20 @@ and TIAs and related syndromes as the two main types of stroke to be analysed.
 ## Clean / Wrangle Data
 
 ```{python}
-# remove unnecessary columns 
+# remove unnecessary columns in health board data
 stroke_activity_hb_reduced = r.stroke_activity_hb.drop(columns = ['hbrqf', 'admission_type_qf', 'age_group_qf', 'sex_qf', 'number_of_discharges_qf', 'crude_rate_qf'])
+
+# remove unnecessary columns in council area data
+stroke_activity_ca_reduced = r.stroke_activity_ca.drop(columns = ['caqf', 'admission_type_qf', 'age_group_qf', 'sex_qf', 'number_of_discarges_qf', 'crude_rate_qf'])
 ```
 
 
 ```{python}
-# filter for Scotland wide stroke numbers for all patients
+# filter for Scotland wide stroke numbers for all patients by health board
 common_df = stroke_activity_hb_reduced.query('admission_type == "All" & age_group == "All" & sex == "All"')
+
+# filter for Scotland wide stroke numbers for all patients by council area
+ca_common_df = stroke_activity_ca_reduced.query('admission_type == "All" & age_group == "All" & sex == "All"')
 ```
 
 ```{python}
@@ -279,31 +290,74 @@ py$tia_age_group_df %>%
 ```
 
 
+# Are there differences in number of cases by health board vs local authority?
 
 ```{python}
-# # line 1 points
-# x1 = [1,2,3]
-# y1 = [2,4,1]
-# # plotting the line 1 points 
-# plt.plot(x1, y1, label = "line 1")
-#   
-# # line 2 points
-# x2 = [1,2,3]
-# y2 = [4,1,3]
-# # plotting the line 2 points 
-# plt.plot(x2, y2, label = "line 2")
-#   
-# # naming the x axis
-# plt.xlabel('x - axis')
-# # naming the y axis
-# plt.ylabel('y - axis')
-# # giving a title to my graph
-# plt.title('Two lines on same graph!')
-#   
-# # show a legend on the plot
-# plt.legend()
-#   
-# # function to show the plot
-# plt.show()
+# health board aggregation
+hb_cases = common_df.query('diagnosis != "Cerebrovascular Disease"')
+hb_cases = hb_cases.drop(columns = 'number_of_discharges')
+
+hb_cases = hb_cases.groupby('financial_year')['crude_rate'].mean().reset_index()
+
 ```
+
+```{python}
+# council area aggregation
+ca_cases = ca_common_df.query('diagnosis != "Cerebrovascular Disease"')
+ca_cases = ca_cases.drop(columns = 'number_of_discharges')
+
+ca_cases = ca_cases.groupby('financial_year')['crude_rate'].mean().reset_index()
+```
+
+```{python}
+# rename crude rate columns to be unique in health board and council area data
+ca_cases.rename(columns = {'crude_rate':'ca_crude_rate'}, inplace = True)
+
+hb_cases.rename(columns = {'crude_rate':'hb_crude_rate'}, inplace = True)
+```
+
+```{python}
+# join ca and hb data sets
+ca_hb_combined_df = hb_cases.merge(ca_cases, how='inner', on='financial_year')
+```
+
+```{python}
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+plt.style.use('ggplot')
+
+# Plot a simple line chart
+plt.plot(ca_hb_combined_df['financial_year'], ca_hb_combined_df['hb_crude_rate'], color='b', label='Health Board')
+
+# Plot another line on the same chart/graph
+plt.plot(ca_hb_combined_df['financial_year'], ca_hb_combined_df['ca_crude_rate'], color='r', label='Council Area')
+plt.xticks(rotation = 30)
+plt.legend()
+plt.title('Mean Crude Rate in Health Board vs Council Area')
+plt.ylabel('Mean Crude Rate')
+plt.show()
+
+```
+
+
+
+
+
+```{python}
+# violin plot of each type of stroke by crude rate
+import seaborn as sns
+sns.set_theme(style="whitegrid")
+
+sh_tia_df = common_df.query('diagnosis != "Cerebrovascular Disease" & diagnosis != "Stroke"')
+
+# Draw a nested violinplot and split the violins for easier comparison
+sns.violinplot(data=sh_tia_df, x="financial_year", y="crude_rate", hue="diagnosis",
+               split=True, inner="quart", linewidth=1,
+               palette={"Subarachnoid Haemorrhage": "b", "TIAs and related syndromes": ".55"})
+sns.despine(left=True)
+plt.show()
+```
+
+
 

@@ -1,0 +1,4 @@
+"0","# rename crude rate columns to be unique in health board and council area data"
+"0","ca_cases.rename(columns = {'crude_rate':'ca_crude_rate'}, inplace = True)"
+"0",""
+"0","hb_cases.rename(columns = {'crude_rate':'hb_crude_rate'}, inplace = True)"

@@ -1,0 +1,8 @@
+"0",""
+"0","# clean health board data names using janitor package"
+"0","stroke_activity_hb <- py$stroke_activity_hb %>% "
+"0","  clean_names()"
+"0",""
+"0","# clean council area data names"
+"0","stroke_activity_ca <- py$stroke_activity_ca %>% "
+"0","  clean_names()"

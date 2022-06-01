@@ -1,0 +1,2 @@
+"0","# join ca and hb data sets"
+"0","ca_hb_combined_df = hb_cases.merge(ca_cases, how='inner', on='financial_year')"

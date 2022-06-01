@@ -1,0 +1,5 @@
+"0","# council area aggregation"
+"0","ca_cases = ca_common_df.query('diagnosis != ""Cerebrovascular Disease""')"
+"0","ca_cases = ca_cases.drop(columns = 'number_of_discharges')"
+"0",""
+"0","ca_cases = ca_cases.groupby('financial_year')['crude_rate'].mean().reset_index()"

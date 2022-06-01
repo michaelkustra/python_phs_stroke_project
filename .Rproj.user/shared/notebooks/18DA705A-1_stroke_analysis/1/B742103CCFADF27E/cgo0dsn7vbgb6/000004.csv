@@ -1,0 +1,13 @@
+"0","import seaborn as sns"
+"0","sns.set_theme(style=""whitegrid"")"
+"0",""
+"0","sh_tia_df = common_df.query('diagnosis != ""Cerebrovascular Disease"" & diagnosis != ""Stroke""')"
+"0",""
+"0","# Draw a nested violinplot and split the violins for easier comparison"
+"0","sns.violinplot(data=sh_tia_df, x=""financial_year"", y=""crude_rate"", hue=""diagnosis"","
+"0","               split=True, inner=""quart"", linewidth=1,"
+"0","               palette={""Subarachnoid Haemorrhage"": ""b"", ""TIAs and related syndromes"": "".55""})"
+"1","<AxesSubplot:title={'center':'Mean Crude Rate by Stroke Type & Gender'}, xlabel='financial_year', ylabel='crude_rate'>
+"
+"0","sns.despine(left=True)"
+"0","plt.show()"

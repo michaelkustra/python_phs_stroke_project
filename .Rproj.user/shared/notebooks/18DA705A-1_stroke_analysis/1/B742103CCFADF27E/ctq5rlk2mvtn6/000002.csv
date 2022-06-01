@@ -1,0 +1,6 @@
+"0","# health board aggregation"
+"0","hb_cases = common_df.query('diagnosis != ""Cerebrovascular Disease""')"
+"0","hb_cases = hb_cases.drop(columns = 'number_of_discharges')"
+"0",""
+"0","hb_cases = hb_cases.groupby('financial_year')['crude_rate'].mean().reset_index()"
+"0",""
