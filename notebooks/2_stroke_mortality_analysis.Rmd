@@ -122,6 +122,7 @@ deaths_by_gender_pivoted = demo_deaths_df \
 deaths_by_gender_pivoted
 ```
 
+# Does this vary with demographics?
 
 ```{python}
 
@@ -147,4 +148,3 @@ plt.show()
 
 
 
-# Does this vary with demographics?
