@@ -1,0 +1,34 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library(reticulate)
+library(tidyverse)
+```
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from pyprojroot import here
+```
+
+```{python}
+council_pops = pd.read_csv(here("raw_data/council_pops.csv"))
+```
+
+```{r}
+council_pops <- py$council_pops %>%
+  filter(Year == "2019")
+```
+
+```{python}
+council_pops_reduced = council_pops.drop(council_pops.loc[:, 'Unnamed: 5':'Unnamed: 49'].columns, axis = 1)
+
+
+r.council_pops.groupby(['Council area', ])
+```
+
+
