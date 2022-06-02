@@ -1,0 +1,6 @@
+"0","# wrangle total populations for each council area"
+"0","pop_reduced <- py$pop_reduced %>%"
+"0","  filter(Year == ""2019"") %>% "
+"0","  janitor::clean_names() %>% "
+"0","  group_by(council_area) %>% "
+"0","  summarise(total_popn = sum(population))"

@@ -217,6 +217,24 @@ pre code {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyZXRpY3VsYXRlKVxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
+<pre class="r"><code>library(reticulate)
+library(tidyverse)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2RzIG92ZXJ3cml0dGVuIGJ5ICdkYnBseXInOlxuICBtZXRob2QgICAgICAgICBmcm9tXG4gIHByaW50LnRibF9sYXp5ICAgICBcbiAgcHJpbnQudGJsX3NxbCAgICAgIFxu4pSA4pSAIEF0dGFjaGluZyBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDEuMy4xIOKUgOKUgFxu4pyTIGdncGxvdDIgMy4zLjUgICAgIOKckyBwdXJyciAgIDAuMy40XG7inJMgdGliYmxlICAzLjEuNiAgICAg4pyTIGRwbHlyICAgMS4wLjhcbuKckyB0aWR5ciAgIDEuMi4wICAgICDinJMgc3RyaW5nciAxLjQuMFxu4pyTIHJlYWRyICAgMi4xLjIgICAgIOKckyBmb3JjYXRzIDAuNS4xXG7ilIDilIAgQ29uZmxpY3RzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2VfY29uZmxpY3RzKCkg4pSA4pSAXG54IGRwbHlyOjpmaWx0ZXIoKSBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbnggZHBseXI6OmxhZygpICAgIG1hc2tzIHN0YXRzOjpsYWcoKVxuIn0= -->
+<pre><code>Registered S3 methods overwritten by &#39;dbplyr&#39;:
+  method         from
+  print.tbl_lazy     
+  print.tbl_sql      
+── Attaching packages ───────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+✓ tibble  3.1.6     ✓ dplyr   1.0.8
+✓ tidyr   1.2.0     ✓ stringr 1.4.0
+✓ readr   2.1.2     ✓ forcats 0.5.1
+── Conflicts ──────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -232,26 +250,53 @@ from pyprojroot import here</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgcHl0aG9uXG5jb3VuY2lsX3BvcHMgPSBwZC5yZWFkX2NzdihoZXJlKFwicmF3X2RhdGEvY291bmNpbF9wb3BzLmNzdlwiKSlcbmBgYCJ9 -->
-<pre class="python"><code>council_pops = pd.read_csv(here(&quot;raw_data/council_pops.csv&quot;))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgcHl0aG9uXG5jb3VuY2lsX3BvcHMgPSBwZC5yZWFkX2NzdihoZXJlKFwicmF3X2RhdGEvY291bmNpbF9wb3BzLmNzdlwiKSlcblxucG9wX3JlZHVjZWQgPSBjb3VuY2lsX3BvcHNbW1wiQ291bmNpbCBhcmVhXCIsIFwiWWVhclwiLCBcIlBvcHVsYXRpb25cIl1dXG5gYGAifQ== -->
+<pre class="python"><code>council_pops = pd.read_csv(here(&quot;raw_data/council_pops.csv&quot;))
+
+pop_reduced = council_pops[[&quot;Council area&quot;, &quot;Year&quot;, &quot;Population&quot;]]</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY291bmNpbF9wb3BzIDwtIHB5JGNvdW5jaWxfcG9wcyAlPiVcbiAgZmlsdGVyKFllYXIgPT0gXCIyMDE5XCIpXG5gYGAifQ== -->
-<pre class="r"><code>council_pops &lt;- py$council_pops %&gt;%
-  filter(Year == &quot;2019&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB3cmFuZ2xlIHRvdGFsIHBvcHVsYXRpb25zIGZvciBlYWNoIGNvdW5jaWwgYXJlYVxucG9wX3JlZHVjZWQgPC0gcHkkcG9wX3JlZHVjZWQgJT4lXG4gIGZpbHRlcihZZWFyID09IFwiMjAxOVwiKSAlPiUgXG4gIGphbml0b3I6OmNsZWFuX25hbWVzKCkgJT4lIFxuICBncm91cF9ieShjb3VuY2lsX2FyZWEpICU+JSBcbiAgc3VtbWFyaXNlKHRvdGFsX3BvcG4gPSBzdW0ocG9wdWxhdGlvbikpXG5gYGAifQ== -->
+<pre class="r"><code># wrangle total populations for each council area
+pop_reduced &lt;- py$pop_reduced %&gt;%
+  filter(Year == &quot;2019&quot;) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  group_by(council_area) %&gt;% 
+  summarise(total_popn = sum(population))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgcHl0aG9uXG4jIGludHJvZHVjZSBjbGVhbiBkYXRhIHRvIHB5dGhvbiBlbnZpcm9ubWVudFxuci5wb3BfcmVkdWNlZFxuYGBgIn0= -->
+<pre class="python"><code># introduce clean data to python environment
+r.pop_reduced</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgcHl0aG9uXG4jIHJlYWQgaW4gY291bmNpbCBtb3J0YWxpdHkgZGF0YVxuY291bmNpbF9kYXRhID0gcGQucmVhZF9jc3YoaGVyZShcInJhd19kYXRhL3N0cm9rZV9tb3J0YWxpdHlieWNhLmNzdlwiKSlcblxuYGBgIn0= -->
+<pre class="python"><code># read in council mortality data
+council_data = pd.read_csv(here(&quot;raw_data/stroke_mortalitybyca.csv&quot;))
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY291bmNpbF9kYXRhX3IgPC0gcHkkY291bmNpbF9kYXRhICU+JVxuICBmaWx0ZXIoTnVtYmVyT2ZEZWF0aHMgIT0gXCJOYU5cIiAmIENBICE9IFwiUzkyMDAwMDAzXCIpXG5gYGAifQ== -->
+<pre class="r"><code>council_data_r &lt;- py$council_data %&gt;%
+  filter(NumberOfDeaths != &quot;NaN&quot; &amp; CA != &quot;S92000003&quot;)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQpgYGB7cn0KbGlicmFyeShyZXRpY3VsYXRlKQpsaWJyYXJ5KHRpZHl2ZXJzZSkKYGBgCgpgYGB7cHl0aG9ufQppbXBvcnQgcGFuZGFzIGFzIHBkCmltcG9ydCBudW1weSBhcyBucAppbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0CmltcG9ydCBzZWFib3JuIGFzIHNucwpmcm9tIHB5cHJvanJvb3QgaW1wb3J0IGhlcmUKYGBgCgpgYGB7cHl0aG9ufQpjb3VuY2lsX3BvcHMgPSBwZC5yZWFkX2NzdihoZXJlKCJyYXdfZGF0YS9jb3VuY2lsX3BvcHMuY3N2IikpCmBgYAoKYGBge3J9CmNvdW5jaWxfcG9wcyA8LSBweSRjb3VuY2lsX3BvcHMgJT4lCiAgZmlsdGVyKFllYXIgPT0gIjIwMTkiKQpgYGAKCmBgYHtweXRob259CmNvdW5jaWxfcG9wc19yZWR1Y2VkID0gY291bmNpbF9wb3BzLmRyb3AoY291bmNpbF9wb3BzLmxvY1s6LCAnVW5uYW1lZDogNSc6J1VubmFtZWQ6IDQ5J10uY29sdW1ucywgYXhpcyA9IDEpCgoKci5jb3VuY2lsX3BvcHMuZ3JvdXBieShbJ0NvdW5jaWwgYXJlYScsIF0pCmBgYAoKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQpgYGB7cn0KbGlicmFyeShyZXRpY3VsYXRlKQpsaWJyYXJ5KHRpZHl2ZXJzZSkKYGBgCgpgYGB7cHl0aG9ufQppbXBvcnQgcGFuZGFzIGFzIHBkCmltcG9ydCBudW1weSBhcyBucAppbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0CmltcG9ydCBzZWFib3JuIGFzIHNucwpmcm9tIHB5cHJvanJvb3QgaW1wb3J0IGhlcmUKYGBgCgpgYGB7cHl0aG9ufQpjb3VuY2lsX3BvcHMgPSBwZC5yZWFkX2NzdihoZXJlKCJyYXdfZGF0YS9jb3VuY2lsX3BvcHMuY3N2IikpCgpwb3BfcmVkdWNlZCA9IGNvdW5jaWxfcG9wc1tbIkNvdW5jaWwgYXJlYSIsICJZZWFyIiwgIlBvcHVsYXRpb24iXV0KYGBgCgpgYGB7cn0KIyB3cmFuZ2xlIHRvdGFsIHBvcHVsYXRpb25zIGZvciBlYWNoIGNvdW5jaWwgYXJlYQpwb3BfcmVkdWNlZCA8LSBweSRwb3BfcmVkdWNlZCAlPiUKICBmaWx0ZXIoWWVhciA9PSAiMjAxOSIpICU+JSAKICBqYW5pdG9yOjpjbGVhbl9uYW1lcygpICU+JSAKICBncm91cF9ieShjb3VuY2lsX2FyZWEpICU+JSAKICBzdW1tYXJpc2UodG90YWxfcG9wbiA9IHN1bShwb3B1bGF0aW9uKSkKYGBgCgpgYGB7cHl0aG9ufQojIGludHJvZHVjZSBjbGVhbiBkYXRhIHRvIHB5dGhvbiBlbnZpcm9ubWVudApyLnBvcF9yZWR1Y2VkCmBgYAoKYGBge3B5dGhvbn0KIyByZWFkIGluIGNvdW5jaWwgbW9ydGFsaXR5IGRhdGEKY291bmNpbF9kYXRhID0gcGQucmVhZF9jc3YoaGVyZSgicmF3X2RhdGEvc3Ryb2tlX21vcnRhbGl0eWJ5Y2EuY3N2IikpCgpgYGAKCmBgYHtyfQpjb3VuY2lsX2RhdGFfciA8LSBweSRjb3VuY2lsX2RhdGEgJT4lCiAgZmlsdGVyKE51bWJlck9mRGVhdGhzICE9ICJOYU4iICYgQ0EgIT0gIlM5MjAwMDAwMyIpCmBgYAoK</div>
 
 
 

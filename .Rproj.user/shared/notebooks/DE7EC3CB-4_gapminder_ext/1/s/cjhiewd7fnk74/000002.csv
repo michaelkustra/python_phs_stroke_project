@@ -1,1 +1,3 @@
 "0","council_pops = pd.read_csv(here(""raw_data/council_pops.csv""))"
+"0",""
+"0","pop_reduced = council_pops[[""Council area"", ""Year"", ""Population""]]"

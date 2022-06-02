@@ -1,0 +1,2 @@
+"0","council_data_r <- py$council_data %>%"
+"0","  filter(NumberOfDeaths != ""NaN"" & CA != ""S92000003"")"

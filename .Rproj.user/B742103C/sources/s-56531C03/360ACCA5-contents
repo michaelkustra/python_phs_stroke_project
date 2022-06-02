@@ -1,0 +1,215 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{python}
+import pandas as pd
+from pyprojroot import here
+```
+
+```{python}
+# read in health board mortality data
+hb_mortality = pd.read_csv(here('raw_data/stroke_mortalitybyhbr.csv'))
+
+# read in council area mortality data
+ca_mortality = pd.read_csv(here('raw_data/stroke_mortalitybyca.csv'))
+```
+
+```{r}
+library(reticulate)
+library(tidyverse)
+# clean data using janitor
+hb_mortality <- py$hb_mortality %>% 
+  janitor::clean_names()
+
+ca_mortality <- py$ca_mortality %>% 
+  janitor::clean_names()
+```
+
+
+```{python}
+# remove unnecessary columns
+hb_mortality_reduced = r.hb_mortality.drop(columns = ['hbrqf', 'age_group_qf', 'sex_qf', 'number_of_deaths_qf', 'crude_rate_qf'])
+
+ca_mortality_reduced = r.ca_mortality.drop(columns = ['caqf', 'age_group_qf', 'sex_qf', 'number_of_deaths_qf', 'crude_rate_qf'])
+```
+
+```{python}
+# check sum of NAs
+hb_refined.isna().sum()
+
+ca_refined.isna().sum()
+# NAs in number of deaths and crude rate
+```
+
+
+
+```{python}
+# filter out Cerebrovascular and Stroke and keep "All" patients "All" sexes
+hb_refined = hb_mortality_reduced.query('age_group == "All" & sex == "All"')
+
+ca_refined = ca_mortality_reduced.query('age_group == "All" & sex == "All"')
+```
+
+
+```{python}
+# group by year and diagnosis then sum number of deaths for each
+grouped_deaths_hb = hb_refined.groupby(['year', 'diagnosis'])['number_of_deaths'].sum().reset_index()
+
+grouped_deaths_ca = ca_refined.groupby(['year', 'diagnosis'])['number_of_deaths'].sum().reset_index()
+```
+
+```{python}
+# pivot long the grouped data
+deaths_pivoted = grouped_deaths_hb \
+    .pivot(
+        index='year', 
+        columns='diagnosis', 
+        values='number_of_deaths'
+    ).reset_index()
+
+deaths_pivoted
+```
+
+# Are there differences in mortality rates for different types of stroke?
+
+```{python}
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.close()
+plt.style.use('ggplot')
+
+plt.plot(deaths_pivoted['year'], deaths_pivoted['Cerebrovascular Disease'], color='b', label='Cerebrovascular Disease')
+
+plt.plot(deaths_pivoted['year'], deaths_pivoted['Stroke'], color='r', label='Stroke')
+
+plt.plot(deaths_pivoted['year'], deaths_pivoted['Subarachnoid Haemorrhage'], color='y', label='Subarachnoid Haemorrhage')
+
+plt.xticks(rotation = 30)
+plt.legend(loc=1)
+plt.title('Total Deaths by Stroke Type')
+plt.ylabel('Number of Deaths')
+plt.show()
+```
+
+```{python}
+# filter for male and female, as well as all ages
+hb_demo_refined = hb_mortality_reduced.query('sex != "All" & age_group == "All"')
+
+ca_demo_refined = ca_mortality_reduced.query('sex != "All" & age_group == "All"')
+```
+
+```{python}
+# group by diagnosis and gender then sum deaths by gender across health boards
+demo_deaths_df = hb_demo_refined.groupby(['diagnosis', 'sex'])['number_of_deaths'].sum().reset_index()
+
+# group by diagnosis and gender then sum deaths by gender across council areas
+ca_demo_deaths_df = ca_demo_refined.groupby(['diagnosis', 'sex'])['number_of_deaths'].sum().reset_index()
+```
+
+```{python}
+# pivot long the grouped data
+deaths_by_gender_pivoted = demo_deaths_df \
+    .pivot(
+        index='diagnosis', 
+        columns='sex', 
+        values='number_of_deaths'
+    ).reset_index()
+
+deaths_by_gender_pivoted
+```
+
+# Does this vary with demographics?
+
+```{python}
+
+plt.close()
+plt.style.use('ggplot')
+
+x = ['Cerebrovascular Disease', 'Stroke', 'Subarachnoid Haemorrhage']
+y_sub = [49808, 27912, 2300]
+z_sub= [33340, 17512, 1120]
+
+X_axis = np.arange(len(x))
+  
+plt.bar(X_axis - 0.2, y_sub, 0.4, label = 'Female')
+plt.bar(X_axis + 0.2, z_sub, 0.4, label = 'Male')
+  
+plt.xticks(X_axis, x)
+plt.xlabel("Diagnosis")
+plt.ylabel("Number of Deaths")
+plt.title("Number of Deaths by Diagnosis Type and Gender")
+plt.legend()
+plt.show()
+```
+
+
+```{python}
+# filter for all ages
+ca_age_mortality = ca_mortality_reduced.query('age_group != "All" & sex == "All"')
+
+hb_age_mortality = hb_mortality_reduced.query('age_group != "All" & sex == "All"')
+```
+
+```{python}
+ca_age_deaths_df = ca_age_mortality.groupby(['age_group', 'year', 'diagnosis'])['easr'].mean().reset_index()
+
+hb_age_deaths_df = hb_age_mortality.groupby(['age_group', 'year', 'diagnosis'])['easr'].mean().reset_index()
+```
+
+```{python}
+ca_deaths_by_age_pivoted = ca_age_deaths_df \
+    .pivot(
+        index=['age_group', 'year'], 
+        columns='diagnosis', 
+        values='easr'
+    ).reset_index()
+
+ca_deaths_by_age_pivoted
+```
+
+```{r}
+# summarise mortality data for mean crude_rate 
+agg_age_df <- py$hb_age_mortality %>%
+  filter(crude_rate != "NaN" & age_group != "under75 years") %>% 
+  group_by(age_group, diagnosis) %>% 
+  summarise(avg = mean(crude_rate))
+
+# summarise mortality data for mean easr 
+deaths_agg_age_df <- py$hb_age_mortality %>%
+  filter(number_of_deaths != "NaN" & age_group != "under75 years") %>% 
+  group_by(age_group, diagnosis) %>% 
+  summarise(avg = mean(number_of_deaths))
+```
+
+
+```{python}
+plt.close()
+plt.style.use('ggplot')
+
+x = ['Cerebrovascular Disease', 'Stroke', 'Subarachnoid Haemorrhage']
+y1 = [1.1260858, 0.5217507, 0.4001854]
+y2 = [17.9279318, 8.8682818, 3.8170845]
+y3 = [92.7212485, 52.4080482, 6.3211286]
+y4 = [747.0306056, 415.9722603, 8.4789158]
+
+X_axis = np.arange(len(x))
+  
+plt.bar(X_axis - 0.1, y1, 0.1, label = '0-44 yrs')
+plt.bar(X_axis + 0.1, y2, 0.1, label = '45 - 64 yrs')
+plt.bar(X_axis - 0.2, y3, 0.1, label = '65 - 74 yrs')
+plt.bar(X_axis + 0.2, y4, 0.1, label = '75+ yrs')
+  
+plt.xticks(X_axis, x)
+plt.xlabel("Diagnosis")
+plt.ylabel("Mean Crude Rate")
+plt.title("Crude Rate by Diagnosis Type and Age Group")
+plt.legend()
+plt.show()
+```
+
+
+
