@@ -1,2 +1,0 @@
-"0","hb_mortality <- py$hb_mortality %>% "
-"0","  janitor::clean_names()"

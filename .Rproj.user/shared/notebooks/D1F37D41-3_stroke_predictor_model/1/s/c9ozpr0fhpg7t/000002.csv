@@ -1,0 +1,8 @@
+"0","scores = cross_val_score(
+    mortality_model, mortality_pred_train, mortality_resp_train, scoring='r2', cv=10
+)
+scores
+"
+"1","array([0.42071129, 0.42431798, 0.48045975, 0.49142173, 0.35157126,
+       0.32231113, 0.43826131, 0.42116809, 0.43358278, 0.41674984])
+"
