@@ -1,0 +1,4 @@
+"0","# model packages"
+"0","import pandas_profiling"
+"0","from sklearn.linear_model import LinearRegression"
+"0","# profile_to_file(nnnn.html)"

@@ -1,0 +1,29 @@
+"0","hb_mortality_reduced.isna().sum()
+"
+"1","year                                    0
+number_of_deaths                      378
+crude_rate                            378
+easr                                    0
+hbr_S08000016                           0
+hbr_S08000017                           0
+hbr_S08000019                           0
+hbr_S08000020                           0
+hbr_S08000022                           0
+hbr_S08000024                           0
+hbr_S08000025                           0
+hbr_S08000026                           0
+hbr_S08000028                           0
+hbr_S08000029                           0
+hbr_S08000030                           0
+hbr_S08000031                           0
+hbr_S08000032                           0
+hbr_S92000003                           0
+age_group_45-64 years                   0
+age_group_65-74 years                   0
+age_group_75plus years                  0
+age_group_under75 years                 0
+sex_Males                               0
+diagnosis_Stroke                        0
+diagnosis_Subarachnoid Haemorrhage      0
+dtype: int64
+"
