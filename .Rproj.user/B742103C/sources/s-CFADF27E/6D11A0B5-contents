@@ -171,34 +171,45 @@ ca_deaths_by_age_pivoted = ca_age_deaths_df \
 ca_deaths_by_age_pivoted
 ```
 
+```{r}
+# summarise mortality data for mean crude_rate 
+agg_age_df <- py$hb_age_mortality %>%
+  filter(crude_rate != "NaN" & age_group != "under75 years") %>% 
+  group_by(age_group, diagnosis) %>% 
+  summarise(avg = mean(crude_rate))
+
+# summarise mortality data for mean easr 
+deaths_agg_age_df <- py$hb_age_mortality %>%
+  filter(number_of_deaths != "NaN" & age_group != "under75 years") %>% 
+  group_by(age_group, diagnosis) %>% 
+  summarise(avg = mean(number_of_deaths))
+```
+
+
 ```{python}
 plt.close()
 plt.style.use('ggplot')
 
-plt.plot(ca_deaths_by_age_pivoted['year'], ca_deaths_by_age_pivoted['Cerebrovascular Disease'], color='b', label='cer')
+x = ['Cerebrovascular Disease', 'Stroke', 'Subarachnoid Haemorrhage']
+y1 = [1.1260858, 0.5217507, 0.4001854]
+y2 = [17.9279318, 8.8682818, 3.8170845]
+y3 = [92.7212485, 52.4080482, 6.3211286]
+y4 = [747.0306056, 415.9722603, 8.4789158]
 
-plt.plot(ca_deaths_by_age_pivoted['year'], ca_deaths_by_age_pivoted['Stroke'], color='r', label='Council Area')
-
-plt.plot(ca_deaths_by_age_pivoted['year'], ca_deaths_by_age_pivoted['Subarachnoid Haemorrhage'], color='r', label='Council Area')
-
-plt.xticks(rotation = 30)
+X_axis = np.arange(len(x))
+  
+plt.bar(X_axis - 0.1, y1, 0.1, label = '0-44 yrs')
+plt.bar(X_axis + 0.1, y2, 0.1, label = '45 - 64 yrs')
+plt.bar(X_axis - 0.2, y3, 0.1, label = '65 - 74 yrs')
+plt.bar(X_axis + 0.2, y4, 0.1, label = '75+ yrs')
+  
+plt.xticks(X_axis, x)
+plt.xlabel("Diagnosis")
+plt.ylabel("Mean Crude Rate")
+plt.title("Crude Rate by Diagnosis Type and Age Group")
 plt.legend()
-plt.title('Mean Crude Rate in Health Board vs Council Area')
-plt.ylabel('Mean Crude Rate')
 plt.show()
 ```
 
-```{r}
-py$ca_age_deaths_df %>%
-  group_by(age_group, year) %>% 
-  ggplot() +
-  aes(x = year, y = easr, colour = age_group, group = age_group) +
-  geom_point()+
-  geom_line()+
-  ggtitle("Subarachnoid Haemorrhage Mean Crude Rate by Age Group") +
-  labs(x = "Financial Year",
-       y = "Mean Crude Rate",
-       colour = "Age Group") +
-  theme_minimal()
-```
+
 

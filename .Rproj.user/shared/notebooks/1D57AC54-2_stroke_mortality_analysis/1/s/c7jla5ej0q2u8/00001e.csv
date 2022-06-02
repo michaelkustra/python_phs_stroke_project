@@ -1,0 +1,40 @@
+"0","plt.close()"
+"0","plt.style.use('ggplot')"
+"0",""
+"0","x = ['Cerebrovascular Disease', 'Stroke', 'Subarachnoid Haemorrhage']"
+"0","y1 = [1.1260858, 0.5217507, 0.4001854]"
+"0","y2 = [17.9279318, 8.8682818, 3.8170845]"
+"0","y3 = [92.7212485, 52.4080482, 6.3211286]"
+"0","y4 = [747.0306056, 415.9722603, 8.4789158]"
+"0",""
+"0","X_axis = np.arange(len(x))"
+"0","  "
+"0","plt.bar(X_axis - 0.1, y1, 0.1, label = '0-44 yrs')"
+"1","<BarContainer object of 3 artists>
+"
+"0","plt.bar(X_axis + 0.1, y2, 0.1, label = '45 - 64 yrs')"
+"1","<BarContainer object of 3 artists>
+"
+"0","plt.bar(X_axis - 0.2, y3, 0.1, label = '65 - 74 yrs')"
+"1","<BarContainer object of 3 artists>
+"
+"0","plt.bar(X_axis + 0.2, y4, 0.1, label = '75+ yrs')"
+"1","<BarContainer object of 3 artists>
+"
+"0","  "
+"0","plt.xticks(X_axis, x)"
+"1","([<matplotlib.axis.XTick object at 0x7f86816699a0>, <matplotlib.axis.XTick object at 0x7f8681669970>, <matplotlib.axis.XTick object at 0x7f868173d3a0>], [Text(0, 0, 'Cerebrovascular Disease'), Text(1, 0, 'Stroke'), Text(2, 0, 'Subarachnoid Haemorrhage')])
+"
+"0","plt.xlabel(""Diagnosis"")"
+"1","Text(0.5, 0, 'Diagnosis')
+"
+"0","plt.ylabel(""Mean Crude Rate"")"
+"1","Text(0, 0.5, 'Mean Crude Rate')
+"
+"0","plt.title(""Crude Rate by Diagnosis Type and Age Group"")"
+"1","Text(0.5, 1.0, 'Crude Rate by Diagnosis Type and Age Group')
+"
+"0","plt.legend()"
+"1","<matplotlib.legend.Legend object at 0x7f867f71ce20>
+"
+"0","plt.show()"

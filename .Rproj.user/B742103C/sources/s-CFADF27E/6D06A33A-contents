@@ -258,7 +258,7 @@ sh_age_group_df.isna().sum()
 ```{r}
 # age_group plot for sub haem
 py$sh_age_group_df %>%
-  filter(crude_rate != "NaN") %>% 
+  filter(crude_rate != "NaN" & age_group != "under75 years") %>% 
   group_by(age_group, financial_year) %>% 
   summarise(avg_crude_rate = mean(crude_rate)) %>% 
   ggplot() +
@@ -275,7 +275,7 @@ py$sh_age_group_df %>%
 ```{r}
 # age_group plot for TIAs
 py$tia_age_group_df %>%
-  filter(crude_rate != "NaN") %>% 
+  filter(crude_rate != "NaN" & age_group != "under75 years") %>% 
   group_by(age_group, financial_year) %>% 
   summarise(avg_crude_rate = mean(crude_rate)) %>% 
   ggplot() +

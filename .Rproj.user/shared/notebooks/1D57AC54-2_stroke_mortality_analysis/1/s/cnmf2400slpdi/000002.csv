@@ -1,0 +1,11 @@
+"0","reticulate::repl_python()
+ca_deaths_by_age_pivoted.isna().sum()
+"
+"1","diagnosis
+age_group                   0
+year                        0
+Cerebrovascular Disease     0
+Stroke                      0
+Subarachnoid Haemorrhage    0
+dtype: int64
+"

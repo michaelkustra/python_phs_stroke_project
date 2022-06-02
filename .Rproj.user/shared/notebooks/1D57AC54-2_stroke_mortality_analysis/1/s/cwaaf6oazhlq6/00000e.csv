@@ -1,0 +1,8 @@
+"0","quit
+deaths_agg_age_df <- py$hb_age_mortality %>%
+  filter(number_of_deaths != ""NaN"" & age_group != ""under75 years"") %>% 
+  group_by(age_group, diagnosis) %>% 
+  summarise(avg = mean(number_of_deaths))
+"
+"1","[38;5;251m`summarise()` has grouped output by 'age_group'. You can override using the `.groups` argument.[39m
+"
