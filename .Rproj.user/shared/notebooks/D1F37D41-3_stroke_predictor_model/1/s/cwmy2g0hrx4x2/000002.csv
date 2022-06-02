@@ -1,0 +1,14 @@
+"0","import statsmodels.api as sm"
+"0",""
+"0","# add in the constant to the data"
+"0","predictor_vars = sm.add_constant(predictor_vars)"
+"0","predictor_vars.head()"
+"1","   const    year  ...  diagnosis_Stroke  diagnosis_Subarachnoid Haemorrhage
+0    1.0  2011.0  ...                 0                                   0
+1    1.0  2011.0  ...                 0                                   0
+2    1.0  2011.0  ...                 0                                   0
+3    1.0  2011.0  ...                 0                                   0
+4    1.0  2011.0  ...                 0                                   0
+
+[5 rows x 24 columns]
+"

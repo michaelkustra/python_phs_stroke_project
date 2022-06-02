@@ -1,3 +1,4 @@
+"0","# model score on test data"
 "0","mortality_model.score(mortality_pred_test, mortality_resp_test)"
-"1","0.3975055672890695
+"1","0.5308793333364394
 "

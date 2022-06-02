@@ -3,7 +3,7 @@
     "path": "~/Documents/CodeClan/python_phs_stroke_project/notebooks/3_stroke_predictor_model.Rmd",
     "project_path": "notebooks/3_stroke_predictor_model.Rmd",
     "type": "r_markdown",
-    "hash": "2499501486",
+    "hash": "1414501778",
     "contents": "",
     "dirty": false,
     "created": 1654159797092.0,
@@ -14,15 +14,15 @@
         "chunk_output_type": "inline",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "140,0",
-        "scrollLine": "0"
+        "cursorPosition": "127,0",
+        "scrollLine": "120"
     },
     "folds": "",
-    "lastKnownWriteTime": 1654170207,
+    "lastKnownWriteTime": 1654174895,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1654170207872,
+    "last_content_update": 1654174895111,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -36,7 +36,7 @@ hb_mortality <- py$hb_mortality %>%
 # clean data by removing unnecessary columns and values
 hb_mortality_reduced = r.hb_mortality.drop(columns = ['hbrqf', 'age_group_qf', 'sex_qf', 'number_of_deaths_qf', 'crude_rate_qf'])
 
-hb_mortality_reduced = hb_mortality_reduced.query('age_group != "All" & sex != "All"').dropna()
+hb_mortality_reduced = hb_mortality_reduced.query('age_group != "All" & sex != "All" & hbr != "S92000003"').dropna()
 ```
 
 ```{python}
@@ -98,7 +98,7 @@ print(np.mean(scores))
 ```
 
 ```{python}
-# match predictors to coefficients in a df
+# feature importance by matching predictors to coefficients in a df
 pd.DataFrame({
     'Variable':predictor_vars.columns,
     'Coefficients':mortality_model.coef_
@@ -123,20 +123,5 @@ print(sm_model.summary())
 # model score on test data
 mortality_model.score(mortality_pred_test, mortality_resp_test)
 ```
-
-```{python}
-# # training the model on training set
-# from sklearn.neighbors import KNeighborsClassifier
-# knn = KNeighborsClassifier(n_neighbors=3)
-# knn.fit(mortality_pred_train, mortality_resp_train)
-#  
-# # making predictions on the testing set
-# y_pred = knn.predict(mortality_pred_test)
-#  
-# # comparing actual response values (y_test) with predicted response values (y_pred)
-# from sklearn import metrics
-# print("kNN model accuracy:", metrics.accuracy_score(mortality_pred_test, y_pred))
-```
-
 
 

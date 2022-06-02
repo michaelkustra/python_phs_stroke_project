@@ -1,4 +1,4 @@
-"0","# define model"
+"0","# define model using train data"
 "0","from sklearn.linear_model import LinearRegression"
 "0","mortality_model = LinearRegression()"
 "0",""
