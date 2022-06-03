@@ -147,3 +147,104 @@ skplt.estimators.plot_learning_curve(LinearRegression(), predictor_vars, respons
                                      
 plt.show()
 ```
+
+## Model 2
+
+### With year and sex removed 
+
+```{python}
+# remove `year` and `sex` from next model
+hb_mortality_reduced_further = hb_mortality_reduced.drop(columns = ['year', 'sex_Males'])
+```
+
+```{python}
+# set our response array for new model
+response_variable = hb_mortality_reduced_further['number_of_deaths']
+# put our predictors in a data frame
+predictor_variables = hb_mortality_reduced_further.drop(columns = 'number_of_deaths')
+```
+
+```{python}
+# create train / test split new model
+from sklearn.model_selection import train_test_split
+
+mortality_predict_train, mortality_predict_test, mortality_respon_train, mortality_respon_test = (
+    train_test_split(
+        predictor_variables, 
+        response_variable, 
+        test_size = 0.1
+    )
+)
+```
+
+```{python}
+# define model using train data
+from sklearn.linear_model import LinearRegression
+
+mortality_model_2 = LinearRegression()
+
+mortality_model_2.fit(mortality_predict_train, mortality_respon_train)
+```
+
+```{python}
+# check r-squared value of current model
+from sklearn.model_selection import cross_val_score
+
+mortality_model_2.score(mortality_predict_train, mortality_respon_train)
+
+# r-squared scores for each fold
+scores = cross_val_score(
+    mortality_model_2, mortality_predict_train, mortality_respon_train, scoring='r2', cv=10
+)
+scores
+
+```
+
+```{python}
+import numpy as np
+
+print(mortality_model_2.score(mortality_predict_train, mortality_respon_train))
+
+# mean score of all models
+print(np.mean(scores))
+```
+
+```{python}
+# feature importance by matching predictors to coefficients in a df
+pd.DataFrame({
+    'Variable':predictor_variables.columns,
+    'Coefficients':mortality_model_2.coef_
+})
+```
+
+```{python}
+import statsmodels.api as sm
+
+# add in the constant to the data
+predictor_variables = sm.add_constant(predictor_variables)
+predictor_variables.head()
+```
+
+```{python}
+# model summary using statsmodels
+sm_model = sm.OLS(response_variable, predictor_variables).fit()
+print(sm_model.summary())
+```
+
+```{python}
+# model score on test data
+mortality_model_2.score(mortality_predict_test, mortality_respon_test)
+```
+
+```{python}
+# Regression Learning Curve
+import matplotlib.pyplot as plt
+import scikitplot as skplt
+
+skplt.estimators.plot_learning_curve(LinearRegression(), predictor_variables, response_variable,
+                                     cv =7, shuffle =True, scoring ="r2", n_jobs =-1,
+                                     figsize =(6,4), title_fontsize ="large", text_fontsize ="medium",
+                                     title ="Regression Learning Curve")
+                                     
+plt.show()
+```
