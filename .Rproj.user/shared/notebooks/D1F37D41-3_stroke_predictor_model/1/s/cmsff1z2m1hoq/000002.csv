@@ -1,0 +1,12 @@
+"0","# doesn't work line 151 but it is installed"
+"0","import matplotlib.pyplot as plt"
+"0","import scikitplot as skplt"
+"0",""
+"0","skplt.estimators.plot_learning_curve(LinearRegression(), predictor_vars, response_var,"
+"0","                                     cv =7, shuffle =True, scoring =""r2"", n_jobs =-1,"
+"0","                                     figsize =(6,4), title_fontsize =""large"", text_fontsize =""large"","
+"0","                                     title =""Regression Learning Curve"")"
+"1","<AxesSubplot:title={'center':'Regression Learning Curve'}, xlabel='Training examples', ylabel='Score'>
+"
+"0","                                     "
+"0","plt.show()"

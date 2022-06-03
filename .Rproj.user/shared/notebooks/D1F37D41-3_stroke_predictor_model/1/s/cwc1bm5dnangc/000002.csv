@@ -1,3 +1,4 @@
+"0","reticulate::repl_python()"
 "0","# clean data by removing unnecessary columns and values"
 "0","hb_mortality_reduced = r.hb_mortality.drop(columns = ['hbrqf', 'age_group_qf', 'sex_qf', 'number_of_deaths_qf', 'crude_rate_qf'])"
 "0",""

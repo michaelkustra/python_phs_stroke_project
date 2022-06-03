@@ -11,8 +11,10 @@ from pyprojroot import here
 ```{r}
 library(reticulate)
 library(tidyverse)
-py_install("pandas-profiling")
-py_install("scikit-learn")
+# py_install("pandas-profiling")
+# py_install("scikit-learn")
+# py_install("scikit-plot")
+py_install("matplotlib")
 ```
 
 ```{python}
@@ -124,4 +126,52 @@ print(sm_model.summary())
 mortality_model.score(mortality_pred_test, mortality_resp_test)
 ```
 
+```{python}
+# not sure what this is actually outputting
+pred_test = mortality_model.predict(mortality_pred_test)
+pred_test
+```
+
+```{python}
+# doesn't seem right here (from notes)
+pred_test = pred_test[:, 1]
+pred_test
+```
+
+```{python}
+# implement OVR and calculate per-class roc_auc_score ?
+# observed values by key variables
+from sklearn.metrics import roc_auc_score
+
+roc_auc_score(y_true = mortality_resp_test, y_score = pred_test)
+```
+
+
+```{python}
+# doesn't work line 151 but it is installed
+import matplotlib.pyplot as plt
+import scikitplot as skplt
+
+skplt.estimators.plot_learning_curve(LinearRegression(), predictor_vars, response_var,
+                                     cv =7, shuffle =True, scoring ="r2", n_jobs =-1,
+                                     figsize =(6,4), title_fontsize ="large", text_fontsize ="large",
+                                     title ="Regression Learning Curve")
+                                     
+plt.show()
+```
+
+```{python}
+# Import what's needed for the Functions API
+import matplotlib.pyplot as plt
+import scikitplot as skplt
+import keras
+
+# This is a Keras classifier. We'll generate probabilities on the test set.
+keras_clf.fit(mortality_pred_train, mortality_resp_train, batch_size=64, nb_epoch=10, verbose=2)
+probas = keras_clf.predict_proba(X_test, batch_size=64)
+
+skplt.metrics.plot_precision_recall_curve(y_test, probas)
+matplotlib.axes._subplots.AxesSubplot object at 0x7fe967d64490
+plt.show()
+```
 

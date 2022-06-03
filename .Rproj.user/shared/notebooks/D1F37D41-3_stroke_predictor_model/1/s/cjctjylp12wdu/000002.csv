@@ -6,8 +6,8 @@
 Dep. Variable:       number_of_deaths   R-squared:                       0.791
 Model:                            OLS   Adj. R-squared:                  0.790
 Method:                 Least Squares   F-statistic:                     625.5
-Date:                Thu, 02 Jun 2022   Prob (F-statistic):               0.00
-Time:                        13:59:15   Log-Likelihood:                -17032.
+Date:                Fri, 03 Jun 2022   Prob (F-statistic):               0.00
+Time:                        09:59:35   Log-Likelihood:                -17032.
 No. Observations:                3822   AIC:                         3.411e+04
 Df Residuals:                    3798   BIC:                         3.426e+04
 Df Model:                          23                                         
