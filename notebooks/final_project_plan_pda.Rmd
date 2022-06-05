@@ -124,7 +124,26 @@ What were the main stages in your data analysis process?
 
 #### Tools for data analysis
 
-What were the main tools you used for your analysis?
+All analysis was completed in RStudio using the `reticulate` library in order
+utilise Python and its complement of useful packages alongside the tidyverse
+realm of packages.
+
+Within Python I used the following packages:
+
+* Pandas for data wrangling and data analysis
+* Numpy to aid with numerical analysis
+* matplotlib for data visualisation
+* seaborn for data visualisation
+* scikit-learn for model building
+* scikit-plot for plotting model performance
+
+Also used for additional analysis was the tidyverse library. 
+
+Within tidyverse the following packages were used:
+
+* Janitor for data cleaning
+* ggplot for data visualisation
+
 
 #### Descriptive, diagnostic, predictive and prescriptive analysis
 
