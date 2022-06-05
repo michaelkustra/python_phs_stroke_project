@@ -1,0 +1,169 @@
+---
+title: "Final project documentation - PDA"
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    df_print: paged
+    css: ../../../styles.css
+    pdf_document: default
+  word_document:
+    toc: yes
+---
+
+# General
+
+### Data Requirements
+
+The data you use in the project has to meet the following criteria:
+
+- At least 5,000 rows
+- At least 3 sources of data
+- Must contain text data, numeric data and dates
+
+Most of the data supplied with the briefs do meet the requirements, but we recommend that you personally make sure that you are indeed meeting these criteria. If your current datasets do not, you are more than welcome to supplement your analysis with further datasets that would help you meet the requirements.
+
+### Product Requirements
+
+Your actual final project analysis process will remain largely the same regardless if you are completing the PDA or not. However, you will need to do a bit more formal planning/documentation of your project for the PDA.
+
+Please create a project plan/documentation according to the template below:
+
+# Template
+
+<br>
+
+## Context
+
+#### Business intelligence and data-driven decision making
+
+Public Health Scotland (PHS) wanted to "gain more understanding about stroke 
+occurrences in Scotland" and this is exactly what my analysis will allow them 
+to do. More specifically, PHS will be able to answer the following questions:
+
+* What the most common type of stroke in Scotland is
+* Differences in diagnosis of stroke between key demographics(age and gender)
+* Differences in stroke diagnosis in health boards vs council areas
+* What are the mortality rates for different types of stroke
+* What are the significant predictors of mortality by stroke
+
+With answers to these questions PHS can then use this analysis to assist their
+decisions with funding towards stroke diagnosis and treatment. This could be
+tailored foe specific demographics or areas according to the analysis. PHS 
+would then be able to make well-informed decisions that are backed up by data
+and allow their funding to go further in diagnosing and treating victims of
+strokes.
+
+#### Domain knowledge and the business context
+
+Public Health Scotland is the national public health body for Scotland. It is a 
+Special NHS Health Board, and is Scotland’s lead national agency for improving 
+and protecting the health and wellbeing of all of Scotland’s people.
+
+As stated by PHS, "Our vision is for a Scotland where everybody thrives. 
+Focusing on prevention and early intervention, we aim to increase healthy life 
+expectancy and reduce premature mortality by responding to the wider determinants 
+that impact on people’s health and wellbeing." This is exactly where my analysis
+fits in with the main aim of PHS, to help reduce premature mortality and respond
+to the needs of the people, specifically stroke victims, to highlight what
+types of stroke are prevalent in Scotland and who is suffering from them,
+
+## Data
+
+#### Internal and external data sources
+
+I used 4 internal sources of data from PHS, they were as follows:
+
+* Stroke Activity by Health Board
+* Stroke Activity by Council Area
+* Stroke Mortality by Health Board
+* Stroke Mortality by Council Area
+
+Each file contained information on hospital activity and deaths related to 
+cerebrovascular disease (including stroke and subarachnoid haemorrhage).
+
+#### Types of data
+
+What kind of data did you work with? E.g. categorical and numerical data and their sub-types.
+
+#### Data formats
+
+Each data set was downloaded flat files in CSV format.
+
+#### Data quality and bias
+
+Briefly describe the quality of the data and whether you have any reasons to suggest the data is biased e.g. only data from a specific demographic even though a broader demographic would be of interest to the organisation.
+
+## Ethics
+
+#### Ethical issues in data sourcing and extraction
+
+Do you have any ethical concerns regarding the sourcing and extraction of your data? 
+
+I have no ethical concerns as there was no personal information in any of the 
+data sets, nothing that could make the patients identifiable in any way. Much
+of the data is very broad, looking at areas or groups of people rather than
+individuals. 
+
+#### Ethical implications of business requirements
+
+There could be ethical implications of the business requirements since it is
+focused on early-intervention and extending life expectancy across Scotland. It
+is not always possible to unilaterally increase life expectancy or prevent 
+disease at an even rate across a whole country with differing demographics. This
+could lead to funding and resources being disproportionately being given to 
+different council areas/health boards. For example, the health board you live in
+determining the quality of prevention, diagnosis or treatment offered for a 
+specific illness.
+
+## Analysis
+
+#### Stages in the data analysis process
+
+What were the main stages in your data analysis process?
+
+#### Tools for data analysis
+
+What were the main tools you used for your analysis?
+
+#### Descriptive, diagnostic, predictive and prescriptive analysis
+
+Please report under which of the below categories your analysis falls **and why** (can be more than one) 
+
+::: {.emphasis}
+**Descriptive Analytics** tells you what happened in the past.
+
+**Diagnostic Analytics** helps you understand why something happened in the past.
+
+**Predictive Analytics** predicts what is most likely to happen in the future.
+
+**Prescriptive Analytics** recommends actions you can take to affect those outcomes.
+:::
+
+
+# PDA Outcomes
+
+### Working with Data (J4Y6 35)
+
+#### 1. Plan an analysis to provide business intelligence
+
+-   1.1 Business intelligence and data-driven decision making
+-   1.2 Domain knowledge and the business context
+-   1.4 Internal and external data sources
+-   1.5 Data quality
+-   1.6 Stages in the data analysis process
+-   1.7 Descriptive, diagnostic, predictive and prescriptive analysis
+-   1.9 Ethical implications of business requirements
+-   1.10 Tools for data analysis
+
+#### 2. Extract data from a variety of sources
+
+-   2.1 Tools for querying data sources
+-   2.2 Types of data (categorical and numerical data and their sub-types)
+-   2.3 Data formats
+-   2.6 Data quality including data bias
+-   2.7 Ethical issues in data sourcing and extraction
+
+#### 4. Analyse data to provide business intelligence
+
+-   4.7 Role of domain knowledge in interpreting analyses
