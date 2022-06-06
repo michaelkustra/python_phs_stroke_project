@@ -227,8 +227,8 @@ predictor_variables.head()
 
 ```{python}
 # model summary using statsmodels
-sm_model = sm.OLS(response_variable, predictor_variables).fit()
-print(sm_model.summary())
+sm_model_2 = sm.OLS(response_variable, predictor_variables).fit()
+print(sm_model_2.summary())
 ```
 
 ```{python}
@@ -248,3 +248,79 @@ skplt.estimators.plot_learning_curve(LinearRegression(), predictor_variables, re
                                      
 plt.show()
 ```
+
+## Diagnostic Plots
+
+```{python}
+#first calculate the residuals
+residuals = sm_model_2.fittedvalues - response_variable
+```
+
+```{python}
+plt.close()
+import seaborn as sns 
+import matplotlib.pyplot as plt
+
+sns.residplot(x = sm_model_2.fittedvalues, y = residuals,
+                          lowess = True,
+                          scatter_kws = {'alpha': 0.5},
+                          line_kws = {'color': 'red', 'lw': 1, 'alpha': 0.8})
+plt.xlabel("Fitted value")
+plt.ylabel("Residual")
+plt.show()
+```
+
+__Interpretation__
+
+The line is almost horizontal and hovers around zero, which is good. However,
+the residuals do fan out for larger fitted values which means this model may
+not be the best at explaining all trends in our data.
+
+### Normal QQ Plot
+
+```{python}
+plt.close()
+import scipy.stats as stats
+
+sm.qqplot(residuals, dist=stats.t, fit=True, line='45')
+
+plt.show()
+```
+
+__Interpretation__
+
+These look okay, generally follows our normal line for the main part.
+
+
+```{python}
+# model values
+model_fitted_y = sm_model_2.fittedvalues
+# model residuals
+model_residuals = sm_model_2.resid
+# normalized residuals
+model_norm_residuals = sm_model_2.get_influence().resid_studentized_internal
+# absolute squared normalized residuals
+model_norm_residuals_abs_sqrt = np.sqrt(np.abs(model_norm_residuals))
+# absolute residuals
+model_abs_resid = np.abs(model_residuals)
+
+plot_lm_3 = plt.figure()
+  plt.scatter(model_fitted_y, model_norm_residuals_abs_sqrt, alpha=0.5);
+  sns.regplot(model_fitted_y, model_norm_residuals_abs_sqrt,
+              scatter=False,
+              ci=False,
+              lowess=True,
+              line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8});
+  plot_lm_3.axes[0].set_title('Scale-Location')
+  plot_lm_3.axes[0].set_xlabel('Fitted values')
+  plot_lm_3.axes[0].set_ylabel('$\sqrt{|Standardized Residuals|}$')
+  plt.show()
+```
+__Interpretation__
+
+Not great, line is in a loose 'v' shape, not what we want here. Shows that
+our error increases for larger fitted values.
+
+What preds were sig, what were not
+interpretation of the coefficients, one numeric one cat if possible
+nice simple table of p-values
