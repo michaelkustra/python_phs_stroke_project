@@ -293,6 +293,7 @@ These look okay, generally follows our normal line for the main part.
 
 
 ```{python}
+plt.close()
 # model values
 model_fitted_y = sm_model_2.fittedvalues
 # model residuals

@@ -225,13 +225,26 @@ from pyprojroot import here</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgcHl0aG9uXG4jIHJlYWQgaW4gaGVhbHRoIGJvYXJkIG1vcnRhbGl0eSBkYXRhXG5oYl9tb3J0YWxpdHkgPSBwZC5yZWFkX2NzdihoZXJlKCdyYXdfZGF0YS9zdHJva2VfbW9ydGFsaXR5YnloYnIuY3N2JykpXG5cbiMgcmVhZCBpbiBjb3VuY2lsIGFyZWEgbW9ydGFsaXR5IGRhdGFcbmNhX21vcnRhbGl0eSA9IHBkLnJlYWRfY3N2KGhlcmUoJ3Jhd19kYXRhL3N0cm9rZV9tb3J0YWxpdHlieWNhLmNzdicpKVxuYGBgIn0= -->
-<pre class="python"><code># read in health board mortality data
-hb_mortality = pd.read_csv(here(&#39;raw_data/stroke_mortalitybyhbr.csv&#39;))
-
-# read in council area mortality data
-ca_mortality = pd.read_csv(here(&#39;raw_data/stroke_mortalitybyca.csv&#39;))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgcHl0aG9uXG5oYl9tb3J0YWxpdHlcblxuYGBgIn0= -->
+<pre class="python"><code>hb_mortality
+</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgWWVhciAgICAgICAgSEJSIEhCUlFGICAuLi4gICBDcnVkZVJhdGUgQ3J1ZGVSYXRlUUYgICAgICAgIEVBU1JcbjAgICAgIDIwMTEgIFMwODAwMDAxNSAgIE5hTiAgLi4uICAgIDAuMDAwMDAwICAgICAgICAgTmFOICAgIDAuMDAwMDAwXG4xICAgICAyMDExICBTMDgwMDAwMTUgICBOYU4gIC4uLiAgICAxLjAyMDM0NiAgICAgICAgIE5hTiAgICAwLjg4NzM4OFxuMiAgICAgMjAxMSAgUzA4MDAwMDE1ICAgTmFOICAuLi4gICAxOS4xMTc1MzUgICAgICAgICBOYU4gICAxNy45NjQ5MTdcbjMgICAgIDIwMTEgIFMwODAwMDAxNSAgIE5hTiAgLi4uICAgMTUuOTgxMjQ5ICAgICAgICAgTmFOICAgMTYuMDE4ODUzXG40ICAgICAyMDExICBTMDgwMDAwMTUgICBOYU4gIC4uLiAgMTMzLjQ3NTcwNyAgICAgICAgIE5hTiAgMTM2LjI0MTE2MVxuLi4uICAgIC4uLiAgICAgICAgLi4uICAgLi4uICAuLi4gICAgICAgICAuLi4gICAgICAgICAuLi4gICAgICAgICAuLi5cbjgwOTUgIDIwMjAgIFM5MjAwMDAwMyAgICAgZCAgLi4uICAgIDAuNDQ1OTc0ICAgICAgICAgTmFOICAgIDAuNDYxNDg2XG44MDk2ICAyMDIwICBTOTIwMDAwMDMgICAgIGQgIC4uLiAgICA1LjI4NDQ1OCAgICAgICAgIE5hTiAgICA1LjE5NTMwM1xuODA5NyAgMjAyMCAgUzkyMDAwMDAzICAgICBkICAuLi4gICAgNS45NzAwMTcgICAgICAgICBOYU4gICAgNS44NDAwODFcbjgwOTggIDIwMjAgIFM5MjAwMDAwMyAgICAgZCAgLi4uICAgIDguNzI2ODAyICAgICAgICAgTmFOICAgIDguNDk5NzM0XG44MDk5ICAyMDIwICBTOTIwMDAwMDMgICAgIGQgIC4uLiAgICAzLjA3MzU0NiAgICAgICAgIE5hTiAgICAzLjAwNDE0MlxuXG5bODEwMCByb3dzIHggMTMgY29sdW1uc11cbiJ9 -->
+<pre><code>      Year        HBR HBRQF  ...   CrudeRate CrudeRateQF        EASR
+0     2011  S08000015   NaN  ...    0.000000         NaN    0.000000
+1     2011  S08000015   NaN  ...    1.020346         NaN    0.887388
+2     2011  S08000015   NaN  ...   19.117535         NaN   17.964917
+3     2011  S08000015   NaN  ...   15.981249         NaN   16.018853
+4     2011  S08000015   NaN  ...  133.475707         NaN  136.241161
+...    ...        ...   ...  ...         ...         ...         ...
+8095  2020  S92000003     d  ...    0.445974         NaN    0.461486
+8096  2020  S92000003     d  ...    5.284458         NaN    5.195303
+8097  2020  S92000003     d  ...    5.970017         NaN    5.840081
+8098  2020  S92000003     d  ...    8.726802         NaN    8.499734
+8099  2020  S92000003     d  ...    3.073546         NaN    3.004142
+
+[8100 rows x 13 columns]</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->

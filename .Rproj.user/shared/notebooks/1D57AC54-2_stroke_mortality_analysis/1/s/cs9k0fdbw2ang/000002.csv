@@ -1,5 +1,17 @@
-"0","# read in health board mortality data"
-"0","hb_mortality = pd.read_csv(here('raw_data/stroke_mortalitybyhbr.csv'))"
-"0",""
-"0","# read in council area mortality data"
-"0","ca_mortality = pd.read_csv(here('raw_data/stroke_mortalitybyca.csv'))"
+"0","hb_mortality
+"
+"1","      Year        HBR HBRQF  ...   CrudeRate CrudeRateQF        EASR
+0     2011  S08000015   NaN  ...    0.000000         NaN    0.000000
+1     2011  S08000015   NaN  ...    1.020346         NaN    0.887388
+2     2011  S08000015   NaN  ...   19.117535         NaN   17.964917
+3     2011  S08000015   NaN  ...   15.981249         NaN   16.018853
+4     2011  S08000015   NaN  ...  133.475707         NaN  136.241161
+...    ...        ...   ...  ...         ...         ...         ...
+8095  2020  S92000003     d  ...    0.445974         NaN    0.461486
+8096  2020  S92000003     d  ...    5.284458         NaN    5.195303
+8097  2020  S92000003     d  ...    5.970017         NaN    5.840081
+8098  2020  S92000003     d  ...    8.726802         NaN    8.499734
+8099  2020  S92000003     d  ...    3.073546         NaN    3.004142
+
+[8100 rows x 13 columns]
+"
