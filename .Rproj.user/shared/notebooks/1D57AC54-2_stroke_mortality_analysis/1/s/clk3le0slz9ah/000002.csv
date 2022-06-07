@@ -1,4 +1,4 @@
-"0","ca_demo_refined = ca.mortality_reduced.query('sex != ""All"" & age_group == ""All""')
-"
-"2","NameError: name 'ca' is not defined
-"
+"0","# filter for male and female, as well as all ages"
+"0","hb_demo_refined = hb_mortality_reduced.query('sex != ""All"" & age_group == ""All""')"
+"0",""
+"0","ca_demo_refined = ca_mortality_reduced.query('sex != ""All"" & age_group == ""All""')"

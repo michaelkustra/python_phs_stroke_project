@@ -1,0 +1,2 @@
+"0","# remove `year` and `sex` from next model"
+"0","hb_mortality_reduced_further = hb_mortality_reduced.drop(columns = ['year', 'sex_Males'])"

@@ -1,0 +1,30 @@
+"0","# feature importance by matching predictors to coefficients in a df"
+"0","pd.DataFrame({"
+"0","    'Variable':predictor_vars.columns,"
+"0","    'Coefficients':mortality_model.coef_"
+"0","})"
+"1","                              Variable  Coefficients
+0                                 year      0.016214
+1                           crude_rate      0.647062
+2                                 easr     -0.442889
+3                        hbr_S08000016    -15.486421
+4                        hbr_S08000017    -11.623335
+5                        hbr_S08000019     -6.097861
+6                        hbr_S08000020      5.061944
+7                        hbr_S08000022     -3.565189
+8                        hbr_S08000024     14.888184
+9                        hbr_S08000025     -1.666681
+10                       hbr_S08000026     -2.103581
+11                       hbr_S08000028     -1.282732
+12                       hbr_S08000029     -2.897635
+13                       hbr_S08000030      0.145122
+14                       hbr_S08000031     34.932817
+15                       hbr_S08000032     12.123173
+16               age_group_45-64 years      3.731505
+17               age_group_65-74 years      1.641653
+18              age_group_75plus years      4.806263
+19             age_group_under75 years     16.732905
+20                           sex_Males      0.261439
+21                    diagnosis_Stroke     -6.150485
+22  diagnosis_Subarachnoid Haemorrhage    -10.462776
+"

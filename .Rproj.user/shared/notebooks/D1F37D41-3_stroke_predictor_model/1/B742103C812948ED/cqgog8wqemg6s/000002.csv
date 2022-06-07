@@ -1,0 +1,9 @@
+"0","import numpy as np"
+"0",""
+"0","print(mortality_model_2.score(mortality_predict_train, mortality_respon_train))"
+"1","0.7858480366273068
+"
+"0","# mean score of all models"
+"0","print(np.mean(scores))"
+"1","0.783177523913638
+"

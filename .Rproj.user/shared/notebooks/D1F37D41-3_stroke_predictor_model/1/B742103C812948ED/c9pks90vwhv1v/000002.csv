@@ -1,0 +1,7 @@
+"0","plt.close()"
+"0","import scipy.stats as stats"
+"0",""
+"0","sm.qqplot(residuals, dist=stats.t, fit=True, line='45')"
+"1","<Figure size 640x480 with 1 Axes>
+"
+"0","plt.show()"

@@ -1,0 +1,36 @@
+"0","plt.close()"
+"0","# model values"
+"0","model_fitted_y = sm_model_2.fittedvalues"
+"0","# model residuals"
+"0","model_residuals = sm_model_2.resid"
+"0","# normalized residuals"
+"0","model_norm_residuals = sm_model_2.get_influence().resid_studentized_internal"
+"0","# absolute squared normalized residuals"
+"0","model_norm_residuals_abs_sqrt = np.sqrt(np.abs(model_norm_residuals))"
+"0","# absolute residuals"
+"0","model_abs_resid = np.abs(model_residuals)"
+"0",""
+"0","plot_lm_3 = plt.figure()"
+"0","  plt.scatter(model_fitted_y, model_norm_residuals_abs_sqrt, alpha=0.5);"
+"1","<matplotlib.collections.PathCollection object at 0x7fc774fddeb0>
+"
+"0","  sns.regplot(model_fitted_y, model_norm_residuals_abs_sqrt,"
+"0","              scatter=False,"
+"0","              ci=False,"
+"0","              lowess=True,"
+"0","              line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8});"
+"1","<AxesSubplot:>
+"
+"2","/Users/user/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/seaborn/_decorators.py:36: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
+  warnings.warn(
+"
+"0","  plot_lm_3.axes[0].set_title('Scale-Location')"
+"1","Text(0.5, 1.0, 'Scale-Location')
+"
+"0","  plot_lm_3.axes[0].set_xlabel('Fitted values')"
+"1","Text(0.5, 0, 'Fitted values')
+"
+"0","  plot_lm_3.axes[0].set_ylabel('$\sqrt{|Standardized Residuals|}$')"
+"1","Text(0, 0.5, '$\\sqrt{|Standardized Residuals|}$')
+"
+"0","  plt.show()"

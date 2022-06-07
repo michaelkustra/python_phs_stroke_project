@@ -1,0 +1,40 @@
+"0","import matplotlib"
+"0","import matplotlib.pyplot as plt"
+"0","import numpy as np"
+"0",""
+"0","plt.close()"
+"0","plt.style.use('ggplot')"
+"0",""
+"0","plt.plot(deaths_pivoted['year'], deaths_pivoted['Cerebrovascular Disease'], color='b', label='Cerebrovascular Disease')"
+"1","[<matplotlib.lines.Line2D object at 0x7fd2052cfa90>]
+"
+"0","plt.plot(deaths_pivoted['year'], deaths_pivoted['Stroke'], color='r', label='Stroke')"
+"1","[<matplotlib.lines.Line2D object at 0x7fd2052cfd90>]
+"
+"0","plt.plot(deaths_pivoted['year'], deaths_pivoted['Subarachnoid Haemorrhage'], color='y', label='Subarachnoid Haemorrhage')"
+"1","[<matplotlib.lines.Line2D object at 0x7fd20529e190>]
+"
+"0","plt.xticks(rotation = 30)"
+"1","(array([2010., 2012., 2014., 2016., 2018., 2020., 2022.]), [Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, '')])
+"
+"0","plt.legend(loc=1)"
+"1","<matplotlib.legend.Legend object at 0x7fd20529e790>
+"
+"0","plt.title('Total Deaths by Stroke Type')"
+"1","Text(0.5, 1.0, 'Total Deaths by Stroke Type')
+"
+"0","plt.ylabel('Number of Deaths')"
+"1","Text(0, 0.5, 'Number of Deaths')
+"
+"0","plt.legend(fontsize=""small"")"
+"1","<matplotlib.legend.Legend object at 0x7fd205376580>
+"
+"0","y = [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000]"
+"0","plt.yticks(np.arange(min(y), max(y)+1, 1000.0))"
+"1","([<matplotlib.axis.YTick object at 0x7fd205393f40>, <matplotlib.axis.YTick object at 0x7fd205393c10>, <matplotlib.axis.YTick object at 0x7fd205393190>, <matplotlib.axis.YTick object at 0x7fd1f7aa7040>, <matplotlib.axis.YTick object at 0x7fd1f7aa7670>, <matplotlib.axis.YTick object at 0x7fd1f7aa7dc0>, <matplotlib.axis.YTick object at 0x7fd1f7aae550>, <matplotlib.axis.YTick object at 0x7fd1f7aa7940>, <matplotlib.axis.YTick object at 0x7fd1f7aaeb50>, <matplotlib.axis.YTick object at 0x7fd1f7ab5040>], [Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, '')])
+"
+"0","x = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]"
+"0","plt.xticks(np.arange(min(x), max(x)+1, 1.0))"
+"1","([<matplotlib.axis.XTick object at 0x7fd205393370>, <matplotlib.axis.XTick object at 0x7fd2053933a0>, <matplotlib.axis.XTick object at 0x7fd2052cfe80>, <matplotlib.axis.XTick object at 0x7fd20529e6a0>, <matplotlib.axis.XTick object at 0x7fd2052a90d0>, <matplotlib.axis.XTick object at 0x7fd2052a9820>, <matplotlib.axis.XTick object at 0x7fd2052a9f70>, <matplotlib.axis.XTick object at 0x7fd1f782d3a0>, <matplotlib.axis.XTick object at 0x7fd1f7ab5fd0>], [Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, '')])
+"
+"0","plt.show()"

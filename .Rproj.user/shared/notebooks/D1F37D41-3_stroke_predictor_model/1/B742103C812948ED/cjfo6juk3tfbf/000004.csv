@@ -1,0 +1,17 @@
+"0","import seaborn as sns 
+import matplotlib.pyplot as plt
+
+sns.residplot(x = sm_model_2.fittedvalues, y = residuals,
+                          lowess = True,
+                          scatter_kws = {'alpha': 0.5},
+                          line_kws = {'color': 'red', 'lw': 1, 'alpha': 0.8})
+"
+"1","<AxesSubplot:>
+"
+"0","plt.xlabel(""Fitted value"")"
+"1","Text(0.5, 0, 'Fitted value')
+"
+"0","plt.ylabel(""Residual"")"
+"1","Text(0, 0.5, 'Residual')
+"
+"0","plt.show()"

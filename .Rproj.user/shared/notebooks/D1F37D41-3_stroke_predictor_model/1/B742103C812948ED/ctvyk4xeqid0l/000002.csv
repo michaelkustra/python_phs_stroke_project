@@ -1,0 +1,2 @@
+"0","#first calculate the residuals"
+"0","residuals = sm_model_2.fittedvalues - response_variable"

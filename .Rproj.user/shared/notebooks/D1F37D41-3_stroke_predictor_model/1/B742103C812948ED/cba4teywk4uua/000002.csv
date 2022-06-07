@@ -1,0 +1,13 @@
+"0","# check r-squared value of current model"
+"0","from sklearn.model_selection import cross_val_score"
+"0","mortality_model.score(mortality_pred_train, mortality_resp_train)"
+"1","0.7829047178190378
+"
+"0","# r-squared scores for each fold"
+"0","scores = cross_val_score("
+"0","    mortality_model, mortality_pred_train, mortality_resp_train, scoring='r2', cv=10"
+"0",")"
+"0","scores"
+"1","array([0.84605846, 0.82513548, 0.7010036 , 0.75236915, 0.71547105,
+       0.81643191, 0.78184989, 0.76654557, 0.75048785, 0.86216324])
+"

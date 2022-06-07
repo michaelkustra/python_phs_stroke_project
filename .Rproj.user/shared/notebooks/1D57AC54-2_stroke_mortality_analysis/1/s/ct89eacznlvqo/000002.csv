@@ -1,5 +1,12 @@
-"0","deaths_by_gender_pivoted
-"
+"0","# pivot long the grouped data"
+"0","deaths_by_gender_pivoted = demo_deaths_df \"
+"0","    .pivot("
+"0","        index='diagnosis', "
+"0","        columns='sex', "
+"0","        values='number_of_deaths'"
+"0","    ).reset_index()"
+"0",""
+"0","deaths_by_gender_pivoted"
 "1","sex                 diagnosis  Females    Males
 0     Cerebrovascular Disease  49808.0  33340.0
 1                      Stroke  27912.0  17512.0

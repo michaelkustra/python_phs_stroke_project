@@ -1,0 +1,329 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{python}
+import pandas as pd
+from pyprojroot import here
+```
+
+```{r}
+library(reticulate)
+library(tidyverse)
+# py_install("pandas-profiling")
+# py_install("scikit-learn")
+# py_install("scikit-plot")
+# py_install("matplotlib")
+```
+
+```{python}
+# model packages
+import pandas_profiling
+```
+
+```{python}
+# read in mortality data
+hb_mortality = pd.read_csv(here("raw_data/stroke_mortalitybyhbr.csv"))
+ca_mortality = pd.read_csv(here("raw_data/stroke_mortalitybyca.csv"))
+```
+
+```{r}
+hb_mortality <- py$hb_mortality %>% 
+  janitor::clean_names()
+```
+
+```{python}
+# clean data by removing unnecessary columns and values
+hb_mortality_reduced = r.hb_mortality.drop(columns = ['hbrqf', 'age_group_qf', 'sex_qf', 'number_of_deaths_qf', 'crude_rate_qf'])
+
+hb_mortality_reduced = hb_mortality_reduced.query('age_group != "All" & sex != "All" & hbr != "S92000003"').dropna()
+```
+
+```{python}
+# assign categorical vars dummies
+hb_mortality_reduced = pd.get_dummies(hb_mortality_reduced, drop_first = True)
+
+hb_mortality_reduced.head()
+```
+
+```{python}
+# set our response array 
+response_var = hb_mortality_reduced['number_of_deaths']
+# put our predictors in a data frame
+predictor_vars = hb_mortality_reduced.drop(columns = 'number_of_deaths')
+```
+
+```{python}
+# create train / test split
+from sklearn.model_selection import train_test_split
+
+mortality_pred_train, mortality_pred_test, mortality_resp_train, mortality_resp_test = (
+    train_test_split(
+        predictor_vars, 
+        response_var, 
+        test_size = 0.1
+    )
+)
+```
+
+
+```{python}
+# define model using train data
+from sklearn.linear_model import LinearRegression
+mortality_model = LinearRegression()
+
+mortality_model.fit(mortality_pred_train, mortality_resp_train)
+```
+
+```{python}
+# check r-squared value of current model
+from sklearn.model_selection import cross_val_score
+mortality_model.score(mortality_pred_train, mortality_resp_train)
+
+# r-squared scores for each fold
+scores = cross_val_score(
+    mortality_model, mortality_pred_train, mortality_resp_train, scoring='r2', cv=10
+)
+scores
+
+```
+
+```{python}
+import numpy as np
+
+print(mortality_model.score(mortality_pred_train, mortality_resp_train))
+
+# mean score of all models
+print(np.mean(scores))
+```
+
+```{python}
+# feature importance by matching predictors to coefficients in a df
+pd.DataFrame({
+    'Variable':predictor_vars.columns,
+    'Coefficients':mortality_model.coef_
+})
+```
+
+```{python}
+import statsmodels.api as sm
+
+# add in the constant to the data
+predictor_vars = sm.add_constant(predictor_vars)
+predictor_vars.head()
+```
+
+```{python}
+# model summary using statsmodels
+sm_model = sm.OLS(response_var, predictor_vars).fit()
+print(sm_model.summary())
+```
+
+__Interpretation__
+
+From this summary it seems that the predictors of `year` and `sex` could be 
+removed from the next model iteration due to their large p-values. May also
+prove useful to group the statistically insiginifcant health boards together
+to see if that group would be significant to my model or not.
+
+
+```{python}
+# model score on test data
+mortality_model.score(mortality_pred_test, mortality_resp_test)
+```
+
+
+
+```{python}
+# Regression Learning Curve
+import matplotlib.pyplot as plt
+import scikitplot as skplt
+
+skplt.estimators.plot_learning_curve(LinearRegression(), predictor_vars, response_var,
+                                     cv =7, shuffle =True, scoring ="r2", n_jobs =-1,
+                                     figsize =(6,4), title_fontsize ="large", text_fontsize ="medium",
+                                     title ="Regression Learning Curve")
+                                     
+plt.show()
+```
+
+## Model 2
+
+### With year and sex removed 
+
+```{python}
+# remove `year` and `sex` from next model
+hb_mortality_reduced_further = hb_mortality_reduced.drop(columns = ['year', 'sex_Males'])
+```
+
+```{python}
+# set our response array for new model
+response_variable = hb_mortality_reduced_further['number_of_deaths']
+# put our predictors in a data frame
+predictor_variables = hb_mortality_reduced_further.drop(columns = 'number_of_deaths')
+```
+
+```{python}
+# create train / test split new model
+from sklearn.model_selection import train_test_split
+
+mortality_predict_train, mortality_predict_test, mortality_respon_train, mortality_respon_test = (
+    train_test_split(
+        predictor_variables, 
+        response_variable, 
+        test_size = 0.1
+    )
+)
+```
+
+```{python}
+# define model using train data
+from sklearn.linear_model import LinearRegression
+
+mortality_model_2 = LinearRegression()
+
+mortality_model_2.fit(mortality_predict_train, mortality_respon_train)
+```
+
+```{python}
+# check r-squared value of current model
+from sklearn.model_selection import cross_val_score
+
+mortality_model_2.score(mortality_predict_train, mortality_respon_train)
+
+# r-squared scores for each fold
+scores = cross_val_score(
+    mortality_model_2, mortality_predict_train, mortality_respon_train, scoring='r2', cv=10
+)
+scores
+
+```
+
+```{python}
+import numpy as np
+
+print(mortality_model_2.score(mortality_predict_train, mortality_respon_train))
+
+# mean score of all models
+print(np.mean(scores))
+```
+
+```{python}
+# feature importance by matching predictors to coefficients in a df
+pd.DataFrame({
+    'Variable':predictor_variables.columns,
+    'Coefficients':mortality_model_2.coef_
+})
+```
+
+```{python}
+import statsmodels.api as sm
+
+# add in the constant to the data
+predictor_variables = sm.add_constant(predictor_variables)
+predictor_variables.head()
+```
+
+```{python}
+# model summary using statsmodels
+sm_model_2 = sm.OLS(response_variable, predictor_variables).fit()
+print(sm_model_2.summary())
+```
+
+```{python}
+# model score on test data
+mortality_model_2.score(mortality_predict_test, mortality_respon_test)
+```
+
+```{python}
+# Regression Learning Curve
+import matplotlib.pyplot as plt
+import scikitplot as skplt
+
+skplt.estimators.plot_learning_curve(LinearRegression(), predictor_variables, response_variable,
+                                     cv =7, shuffle =True, scoring ="r2", n_jobs =-1,
+                                     figsize =(6,4), title_fontsize ="large", text_fontsize ="medium",
+                                     title ="Regression Learning Curve")
+                                     
+plt.show()
+```
+
+## Diagnostic Plots
+
+```{python}
+#first calculate the residuals
+residuals = sm_model_2.fittedvalues - response_variable
+```
+
+```{python}
+plt.close()
+import seaborn as sns 
+import matplotlib.pyplot as plt
+
+sns.residplot(x = sm_model_2.fittedvalues, y = residuals,
+                          lowess = True,
+                          scatter_kws = {'alpha': 0.5},
+                          line_kws = {'color': 'red', 'lw': 1, 'alpha': 0.8})
+plt.xlabel("Fitted value")
+plt.ylabel("Residual")
+plt.show()
+```
+
+__Interpretation__
+
+The line is almost horizontal and hovers around zero, which is good. However,
+the residuals do fan out for larger fitted values which means this model may
+not be the best at explaining all trends in our data.
+
+### Normal QQ Plot
+
+```{python}
+plt.close()
+import scipy.stats as stats
+
+sm.qqplot(residuals, dist=stats.t, fit=True, line='45')
+
+plt.show()
+```
+
+__Interpretation__
+
+These look okay, generally follows our normal line for the main part.
+
+
+```{python}
+plt.close()
+# model values
+model_fitted_y = sm_model_2.fittedvalues
+# model residuals
+model_residuals = sm_model_2.resid
+# normalized residuals
+model_norm_residuals = sm_model_2.get_influence().resid_studentized_internal
+# absolute squared normalized residuals
+model_norm_residuals_abs_sqrt = np.sqrt(np.abs(model_norm_residuals))
+# absolute residuals
+model_abs_resid = np.abs(model_residuals)
+
+plot_lm_3 = plt.figure()
+  plt.scatter(model_fitted_y, model_norm_residuals_abs_sqrt, alpha=0.5);
+  sns.regplot(model_fitted_y, model_norm_residuals_abs_sqrt,
+              scatter=False,
+              ci=False,
+              lowess=True,
+              line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8});
+  plot_lm_3.axes[0].set_title('Scale-Location')
+  plot_lm_3.axes[0].set_xlabel('Fitted values')
+  plot_lm_3.axes[0].set_ylabel('$\sqrt{|Standardized Residuals|}$')
+  plt.show()
+```
+__Interpretation__
+
+Not great, line is in a loose 'v' shape, not what we want here. Shows that
+our error increases for larger fitted values.
+
+__Model Presentation Notes__
+
+What preds were sig, what were not
+interpretation of the coefficients, one numeric one cat if possible
+nice simple table of p-values

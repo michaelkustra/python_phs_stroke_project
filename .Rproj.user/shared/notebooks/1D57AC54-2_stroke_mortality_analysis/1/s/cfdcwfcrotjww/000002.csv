@@ -1,0 +1,5 @@
+"0","# group by diagnosis and gender then sum deaths by gender across health boards"
+"0","demo_deaths_df = hb_demo_refined.groupby(['diagnosis', 'sex'])['number_of_deaths'].sum().reset_index()"
+"0",""
+"0","# group by diagnosis and gender then sum deaths by gender across council areas"
+"0","ca_demo_deaths_df = ca_demo_refined.groupby(['diagnosis', 'sex'])['number_of_deaths'].sum().reset_index()"

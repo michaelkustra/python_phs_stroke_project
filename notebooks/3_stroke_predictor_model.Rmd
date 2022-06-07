@@ -321,6 +321,8 @@ __Interpretation__
 Not great, line is in a loose 'v' shape, not what we want here. Shows that
 our error increases for larger fitted values.
 
+__Model Presentation Notes__
+
 What preds were sig, what were not
 interpretation of the coefficients, one numeric one cat if possible
 nice simple table of p-values

@@ -1,0 +1,4 @@
+"0","# set our response array for new model"
+"0","response_variable = hb_mortality_reduced_further['number_of_deaths']"
+"0","# put our predictors in a data frame"
+"0","predictor_variables = hb_mortality_reduced_further.drop(columns = 'number_of_deaths')"

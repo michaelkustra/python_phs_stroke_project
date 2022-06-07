@@ -2,16 +2,16 @@
 "0","plt.style.use('ggplot')"
 "0",""
 "0","plt.plot(ca_hb_combined_easr_df['financial_year'], ca_hb_combined_easr_df['hb_easr_rate'], color='b', label='Health Board')"
-"1","[<matplotlib.lines.Line2D object at 0x7f867f5aa0a0>]
+"1","[<matplotlib.lines.Line2D object at 0x7fd21879a460>]
 "
 "0","plt.plot(ca_hb_combined_easr_df['financial_year'], ca_hb_combined_easr_df['ca_easr_rate'], color='r', label='Council Area')"
-"1","[<matplotlib.lines.Line2D object at 0x7f867f5aa310>]
+"1","[<matplotlib.lines.Line2D object at 0x7fd21879a640>]
 "
 "0","plt.xticks(rotation = 30)"
 "1","([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, ''), Text(0, 0, '')])
 "
 "0","plt.legend()"
-"1","<matplotlib.legend.Legend object at 0x7f867f5c4130>
+"1","<matplotlib.legend.Legend object at 0x7fd219800340>
 "
 "0","plt.title('Mean EASR in Health Board vs Council Area')"
 "1","Text(0.5, 1.0, 'Mean EASR in Health Board vs Council Area')
